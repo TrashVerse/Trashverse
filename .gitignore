@@ -1,40 +1,65 @@
 # Dependencies
 node_modules/
+*/node_modules/
+**/node_modules/
+
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
+*.so
 .Python
-venv/
 env/
+venv/
+ENV/
+backend/venv/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+backend/trashverse.db
 
 # Environment variables
 .env
 .env.local
 .env.*.local
+backend/.env
 
 # Build outputs
 dist/
 build/
-.next/
+*.egg-info/
 .expo/
+.expo-shared/
 
 # IDE
 .vscode/
 .idea/
 *.swp
 *.swo
+*~
 
 # OS
 .DS_Store
 Thumbs.db
+desktop.ini
 
 # Logs
 *.log
 npm-debug.log*
-
-# Database
-*.db
-*.sqlite
-*.sqlite3
+yarn-debug.log*
+yarn-error.log*
 
 # Uploads
+backend/uploads/
 uploads/
+
+# Test coverage
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Misc
+.cache/
+.parcel-cache/

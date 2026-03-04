@@ -38,7 +38,7 @@ useEffect(() => {
   }, 3000);
 
   return () => clearTimeout(timer);
-}, );
+}, [router, dots]);
 
 
   return (

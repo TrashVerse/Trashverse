@@ -66,8 +66,12 @@ export default function HomeScreen() {
           />
           <Text style={styles.logoText}>TrashVerse</Text>
           <View style={styles.headerRight}>
-        <Ionicons name="notifications-outline" size={22} color="#14532D" />
-        <Ionicons name="person" size={22} color="#365314" />
+        <TouchableOpacity onPress={() => router.push('/notifications')}>
+          <Ionicons name="notifications-outline" size={22} color="#14532D" />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => router.push('/profile')}>
+          <Ionicons name="person" size={22} color="#365314" />
+        </TouchableOpacity>
       </View>
         </View>
       </View>
@@ -151,6 +155,29 @@ export default function HomeScreen() {
 
         <TouchableOpacity style={styles.recycleBtn} onPress={() => router.push('/(tabs)/sell')}>
           <Text style={styles.recycleBtnText}>Earn Now</Text>
+        </TouchableOpacity>
+      </View>
+
+      {/* QUICK ACTIONS */}
+      <View style={styles.quickActions}>
+        <TouchableOpacity style={styles.actionCard} onPress={() => router.push('/pickups')}>
+          <Ionicons name="car-outline" size={32} color="#3B82F6" />
+          <Text style={styles.actionText}>Pickups</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.actionCard} onPress={() => router.push('/rewards')}>
+          <Ionicons name="gift-outline" size={32} color="#8B5CF6" />
+          <Text style={styles.actionText}>Rewards</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.actionCard} onPress={() => router.push('/stations')}>
+          <Ionicons name="business-outline" size={32} color="#10B981" />
+          <Text style={styles.actionText}>Stations</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.actionCard} onPress={() => router.push('/leaderboard')}>
+          <Ionicons name="trophy-outline" size={32} color="#F59E0B" />
+          <Text style={styles.actionText}>Leaderboard</Text>
         </TouchableOpacity>
       </View>
 
@@ -362,5 +389,27 @@ const styles = StyleSheet.create({
     color: "#FFFFFF",
     fontSize: 14,
     width: "90%",
-  }
+  },
+
+  quickActions: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 12,
+    marginTop: 16,
+  },
+
+  actionCard: {
+    width: "48%",
+    backgroundColor: "#F9FAFB",
+    borderRadius: 12,
+    padding: 16,
+    alignItems: "center",
+    gap: 8,
+  },
+
+  actionText: {
+    fontSize: 14,
+    fontWeight: "600",
+    color: "#111827",
+  },
 });

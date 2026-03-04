@@ -13,7 +13,7 @@ export interface Reward {
   created_at: string;
 }
 
-export interface Transaction {
+export interface RewardTransaction {
   id: number;
   user_id: number;
   type: string;
@@ -38,7 +38,7 @@ export const rewardService = {
     return response.data;
   },
 
-  async redeemReward(id: number): Promise<Transaction> {
+  async redeemReward(id: number): Promise<RewardTransaction> {
     const response = await api.post(`/api/rewards/${id}/redeem`);
     return response.data;
   },

@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   ActivityIndicator,
   RefreshControl,
+  Alert,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { wasteService, WasteEntryResponse } from '@/services/waste';
@@ -22,6 +23,7 @@ export default function HistoryScreen() {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
+  const [selectedEntry, setSelectedEntry] = useState<WasteEntryResponse | null>(null);
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -51,6 +53,38 @@ export default function HistoryScreen() {
     setRefreshing(true);
     await loadData();
     setRefreshing(false);
+  };
+
+  const handleDeleteEntry = async (id: number) => {
+    Alert.alert(
+      'Delete Entry',
+      'Are you sure you want to delete this waste entry?',
+      [
+        { text: 'Cancel', style: 'cancel' },
+        {
+          text: 'Delete',
+          style: 'destructive',
+          onPress: async () => {
+            try {
+              await wasteService.deleteEntry(id);
+              Alert.alert('Success', 'Entry deleted successfully');
+              loadData();
+            } catch (error: any) {
+              Alert.alert('Error', error.response?.data?.detail || 'Failed to delete entry');
+            }
+          },
+        },
+      ]
+    );
+  };
+
+  const handleViewDetails = async (id: number) => {
+    try {
+      const entry = await wasteService.getEntry(id);
+      setSelectedEntry(entry);
+    } catch (error: any) {
+      Alert.alert('Error', error.response?.data?.detail || 'Failed to load entry details');
+    }
   };
 
   const formatDate = (dateString: string) => {
@@ -148,6 +182,22 @@ export default function HistoryScreen() {
                     <Text style={styles.cardDescription}>{entry.description}</Text>
                   )}
                 </View>
+                <View style={styles.cardActions}>
+                  <TouchableOpacity
+                    style={styles.actionButton}
+                    onPress={() => handleViewDetails(entry.id)}
+                  >
+                    <Ionicons name="eye-outline" size={16} color="#3B82F6" />
+                    <Text style={styles.actionButtonText}>Details</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    style={[styles.actionButton, styles.deleteButton]}
+                    onPress={() => handleDeleteEntry(entry.id)}
+                  >
+                    <Ionicons name="trash-outline" size={16} color="#EF4444" />
+                    <Text style={[styles.actionButtonText, styles.deleteButtonText]}>Delete</Text>
+                  </TouchableOpacity>
+                </View>
               </View>
             ))
           )
@@ -200,6 +250,63 @@ export default function HistoryScreen() {
           ))
         )}
       </ScrollView>
+
+      {selectedEntry && (
+        <View style={styles.modal}>
+          <View style={styles.modalContent}>
+            <View style={styles.modalHeader}>
+              <Text style={styles.modalTitle}>Entry Details</Text>
+              <TouchableOpacity onPress={() => setSelectedEntry(null)}>
+                <Ionicons name="close" size={24} color="#6B7280" />
+              </TouchableOpacity>
+            </View>
+            <ScrollView style={styles.modalBody}>
+              <View style={styles.detailRow}>
+                <Text style={styles.detailLabel}>Waste Type</Text>
+                <Text style={styles.detailValue}>{selectedEntry.waste_type}</Text>
+              </View>
+              <View style={styles.detailRow}>
+                <Text style={styles.detailLabel}>Weight</Text>
+                <Text style={styles.detailValue}>{selectedEntry.weight_kg} kg</Text>
+              </View>
+              <View style={styles.detailRow}>
+                <Text style={styles.detailLabel}>Amount Earned</Text>
+                <Text style={[styles.detailValue, styles.greenText]}>
+                  ₦{selectedEntry.amount_earned}
+                </Text>
+              </View>
+              <View style={styles.detailRow}>
+                <Text style={styles.detailLabel}>Points Earned</Text>
+                <Text style={[styles.detailValue, styles.purpleText]}>
+                  {selectedEntry.points_earned}
+                </Text>
+              </View>
+              <View style={styles.detailRow}>
+                <Text style={styles.detailLabel}>Created At</Text>
+                <Text style={styles.detailValue}>{formatDate(selectedEntry.created_at)}</Text>
+              </View>
+              <View style={styles.detailRow}>
+                <Text style={styles.detailLabel}>Entry ID</Text>
+                <Text style={styles.detailValue}>#{selectedEntry.id}</Text>
+              </View>
+              {selectedEntry.description && (
+                <View style={styles.detailRow}>
+                  <Text style={styles.detailLabel}>Description</Text>
+                  <Text style={styles.detailValue}>{selectedEntry.description}</Text>
+                </View>
+              )}
+              {selectedEntry.ai_confidence && (
+                <View style={styles.detailRow}>
+                  <Text style={styles.detailLabel}>AI Confidence</Text>
+                  <Text style={styles.detailValue}>
+                    {(selectedEntry.ai_confidence * 100).toFixed(1)}%
+                  </Text>
+                </View>
+              )}
+            </ScrollView>
+          </View>
+        </View>
+      )}
     </View>
   );
 }
@@ -307,6 +414,88 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#6B7280',
     marginTop: 4,
+  },
+  cardActions: {
+    flexDirection: 'row',
+    gap: 8,
+    marginTop: 12,
+    paddingTop: 12,
+    borderTopWidth: 1,
+    borderTopColor: '#E5E7EB',
+  },
+  actionButton: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 4,
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    borderRadius: 6,
+    backgroundColor: '#EFF6FF',
+  },
+  deleteButton: {
+    backgroundColor: '#FEE2E2',
+  },
+  actionButtonText: {
+    fontSize: 12,
+    fontWeight: '600',
+    color: '#3B82F6',
+  },
+  deleteButtonText: {
+    color: '#EF4444',
+  },
+  modal: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 16,
+  },
+  modalContent: {
+    backgroundColor: 'white',
+    borderRadius: 12,
+    width: '100%',
+    maxHeight: '80%',
+    padding: 20,
+  },
+  modalHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 16,
+  },
+  modalTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#1F2937',
+  },
+  modalBody: {
+    maxHeight: 400,
+  },
+  detailRow: {
+    marginBottom: 16,
+  },
+  detailLabel: {
+    fontSize: 12,
+    color: '#6B7280',
+    marginBottom: 4,
+  },
+  detailValue: {
+    fontSize: 16,
+    fontWeight: '500',
+    color: '#1F2937',
+    textTransform: 'capitalize',
+  },
+  greenText: {
+    color: '#16A34A',
+  },
+  purpleText: {
+    color: '#9333EA',
   },
   empty: {
     alignItems: 'center',

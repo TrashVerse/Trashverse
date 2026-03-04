@@ -45,8 +45,6 @@ export default function GuideItem({
     <Pressable
       onPress={onPress}
       onPressIn={onActivate}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
     >
       <Animated.View style={[styles.item, animatedStyle]}>
         <Ionicons name={guide.icon} size={22} color="#4BAE4F" />
