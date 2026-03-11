@@ -32,6 +32,7 @@ export default function LoginScreen() {
     try {
       setLoading(true);
       await login({ username: username.trim(), password });
+      console.log('Login successful');
       router.replace('/(tabs)/home');
     } catch (err: any) {
       const errorMessage = err.response?.data?.detail || 'Login failed. Please try again.';
@@ -107,7 +108,7 @@ export default function LoginScreen() {
             style={styles.linkContainer}
           >
             <Text style={styles.linkText}>
-              Don't have an account? <Text style={styles.linkBold}>Register</Text>
+              Don`&apos;t have an account? <Text style={styles.linkBold}>Register</Text>
             </Text>
           </TouchableOpacity>
 

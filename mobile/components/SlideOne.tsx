@@ -22,22 +22,18 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   image: {
-    // resizeMode: "contain",
+    resizeMode: "contain",
     width: "100%",
     height: 400,
     marginTop: "20%",
-    marginBottom: "10%",
-    marginLeft: "5%",
   },
   title: {
     fontFamily: "out-fit-semi-bold",
-    fontSize: 25,
+    fontSize: 18,
     fontWeight: "600",
   },
   desc: {
-    fontSize: 20,
+    fontSize: 16,
     textAlign: "center",
-    fontWeight: "400",
-    color: "gray",
   },
 });
