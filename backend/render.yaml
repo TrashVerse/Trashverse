@@ -21,12 +21,16 @@ services:
       - key: FIREBASE_CREDENTIALS_PATH
         value: ./firebase-credentials.json
       - key: RESEND_API_KEY
-        sync: false
+        value: re_imeqaLTJ_LMycHLq3YEs1R9XAiHqD9VvW
       - key: DEFAULT_FROM_EMAIL
         value: onboarding@resend.dev
       - key: PASSWORD_RESET_TOKEN_EXPIRE_MINUTES
         value: 30
       - key: EMAIL_MODE
+        value: production
+      - key: DEV_EMAIL_RECIPIENT
+        value: onyewuchiscepter@gmail.com
+      - key: ENVIRONMENT
         value: production
 
 databases:
