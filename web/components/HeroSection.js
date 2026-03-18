@@ -25,7 +25,7 @@ export default function HeroSection() {
 
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <secbutton className="bg-green-600 text-white px-8 py-3 rounded-full font-bold hover:bg-green-700 transition shadow-md">
-                <Link href="/login">
+                <Link href="/">
                 Schedule Pickup
                 </Link>
               </secbutton>
