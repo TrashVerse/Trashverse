@@ -32,6 +32,9 @@ build/
 *.egg-info/
 .expo/
 .expo-shared/
+.next/
+web/.next/
+web/dist/
 
 # IDE
 .vscode/
