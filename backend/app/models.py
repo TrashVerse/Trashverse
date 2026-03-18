@@ -53,6 +53,14 @@ class User(Base):
     # FCM Token for push notifications
     fcm_token = Column(String, nullable=True)
     
+    # Password reset tokens
+    password_reset_token = Column(String, nullable=True)
+    password_reset_token_expires = Column(DateTime, nullable=True)
+    
+    # Account recovery tokens
+    recovery_token = Column(String, nullable=True)
+    recovery_token_expires = Column(DateTime, nullable=True)
+    
     is_active = Column(Boolean, default=True)
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)

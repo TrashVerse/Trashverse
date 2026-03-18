@@ -236,3 +236,22 @@ class DashboardStats(BaseModel):
     user_stats: UserStats
     upcoming_pickups: List[PickupResponse]
     available_rewards: List[RewardResponse]
+
+# Password Reset Schemas
+class ForgotPasswordRequest(BaseModel):
+    email: EmailStr
+
+class PasswordResetRequest(BaseModel):
+    token: str
+    new_password: str = Field(min_length=8)
+
+class PasswordResetResponse(BaseModel):
+    message: str
+    success: bool
+
+class AccountRecoveryRequest(BaseModel):
+    email: EmailStr
+
+class AccountRecoveryResponse(BaseModel):
+    message: str
+    success: bool
