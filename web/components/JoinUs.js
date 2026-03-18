@@ -30,7 +30,7 @@ export default function JoinTeam() {
           </p>
           </joindiv>
           <openbutton className="bg-green-700 text-white px-6 py-2 rounded-md hover:bg-green-800 transition-colors font-medium whitespace-nowrap shrink-0 shadow-sm w-full sm:w-auto">
-            <Link href="/careers">
+            <Link href="/blog">
             View Openings
             </Link>
             

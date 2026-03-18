@@ -1,6 +1,105 @@
 {
   "pages": {
-    "/_app": []
+    "/": [
+      "static/chunks/[root-of-the-server]__90f0ef8d._.js",
+      "static/chunks/6f13c_next_dist_compiled_f523dc56._.js",
+      "static/chunks/6f13c_next_dist_shared_lib_147f10e0._.js",
+      "static/chunks/6f13c_next_dist_client_d4ee225b._.js",
+      "static/chunks/6f13c_next_dist_217dd298._.js",
+      "static/chunks/6f13c_next_a5b6eb9b._.js",
+      "static/chunks/6f13c_react-dom_2bc0e490._.js",
+      "static/chunks/6f13c_react-icons_fa_index_mjs_95c31ec5._.js",
+      "static/chunks/6f13c_react-icons_fa6_index_mjs_885ac223._.js",
+      "static/chunks/6f13c_react-icons_lib_16751cd9._.js",
+      "static/chunks/6f13c_cd4ad7a3._.js",
+      "static/chunks/Desktop_Upload_Trashverse_web_pages_index_2da965e7._.js",
+      "static/chunks/turbopack-Desktop_Upload_Trashverse_web_pages_index_0364ece2._.js"
+    ],
+    "/_app": [
+      "static/chunks/6f13c_next_dist_compiled_9ad87c03._.js",
+      "static/chunks/6f13c_next_dist_shared_lib_5cc3e1fb._.js",
+      "static/chunks/6f13c_next_dist_client_2a05a792._.js",
+      "static/chunks/6f13c_next_dist_217dd298._.js",
+      "static/chunks/6f13c_react-dom_2bc0e490._.js",
+      "static/chunks/6f13c_92049d3c._.js",
+      "static/chunks/[root-of-the-server]__afe0e51f._.js",
+      "static/chunks/Desktop_Upload_Trashverse_web_styles_globals_425a73d6.css",
+      "static/chunks/Desktop_Upload_Trashverse_web_pages__app_2da965e7._.js",
+      "static/chunks/turbopack-Desktop_Upload_Trashverse_web_pages__app_94b8b14a._.js"
+    ],
+    "/_error": [
+      "static/chunks/6f13c_next_dist_compiled_9ad87c03._.js",
+      "static/chunks/6f13c_next_dist_shared_lib_3e4c9a73._.js",
+      "static/chunks/6f13c_next_dist_client_2a05a792._.js",
+      "static/chunks/6f13c_next_dist_cc6fc782._.js",
+      "static/chunks/6f13c_next_error_fab6b47b.js",
+      "static/chunks/[next]_entry_page-loader_ts_94f3504d._.js",
+      "static/chunks/6f13c_react-dom_2bc0e490._.js",
+      "static/chunks/6f13c_e2ad9594._.js",
+      "static/chunks/[root-of-the-server]__5aa812aa._.js",
+      "static/chunks/Desktop_Upload_Trashverse_web_pages__error_2da965e7._.js",
+      "static/chunks/turbopack-Desktop_Upload_Trashverse_web_pages__error_819e1f1d._.js"
+    ],
+    "/dashboard": [
+      "static/chunks/6f13c_next_dist_compiled_9ad87c03._.js",
+      "static/chunks/6f13c_next_dist_shared_lib_94253963._.js",
+      "static/chunks/6f13c_next_dist_client_e5d5a3dc._.js",
+      "static/chunks/6f13c_next_dist_217dd298._.js",
+      "static/chunks/6f13c_next_link_9b06b0cf.js",
+      "static/chunks/6f13c_react-dom_2bc0e490._.js",
+      "static/chunks/6f13c_8fdd6e52._.js",
+      "static/chunks/[root-of-the-server]__5a550ca4._.js",
+      "static/chunks/Desktop_Upload_Trashverse_web_pages_dashboard_2da965e7._.js",
+      "static/chunks/turbopack-Desktop_Upload_Trashverse_web_pages_dashboard_22a0ab0a._.js"
+    ],
+    "/dashboard/history": [
+      "static/chunks/6f13c_next_dist_compiled_9ad87c03._.js",
+      "static/chunks/6f13c_next_dist_shared_lib_94253963._.js",
+      "static/chunks/6f13c_next_dist_client_e5d5a3dc._.js",
+      "static/chunks/6f13c_next_dist_217dd298._.js",
+      "static/chunks/6f13c_next_link_9b06b0cf.js",
+      "static/chunks/6f13c_react-dom_2bc0e490._.js",
+      "static/chunks/6f13c_db0cedb2._.js",
+      "static/chunks/[root-of-the-server]__111c1207._.js",
+      "static/chunks/Desktop_Upload_Trashverse_web_pages_dashboard_history_2da965e7.js",
+      "static/chunks/turbopack-Desktop_Upload_Trashverse_web_pages_dashboard_history_47d6a238.js"
+    ],
+    "/dashboard/profile": [
+      "static/chunks/6f13c_next_dist_compiled_9ad87c03._.js",
+      "static/chunks/6f13c_next_dist_shared_lib_94253963._.js",
+      "static/chunks/6f13c_next_dist_client_e5d5a3dc._.js",
+      "static/chunks/6f13c_next_dist_217dd298._.js",
+      "static/chunks/6f13c_next_link_9b06b0cf.js",
+      "static/chunks/6f13c_react-dom_2bc0e490._.js",
+      "static/chunks/6f13c_db0cedb2._.js",
+      "static/chunks/[root-of-the-server]__1a78b90d._.js",
+      "static/chunks/Desktop_Upload_Trashverse_web_pages_dashboard_profile_2da965e7.js",
+      "static/chunks/turbopack-Desktop_Upload_Trashverse_web_pages_dashboard_profile_b1b2eea5.js"
+    ],
+    "/login": [
+      "static/chunks/6f13c_next_dist_compiled_9ad87c03._.js",
+      "static/chunks/6f13c_next_dist_shared_lib_94253963._.js",
+      "static/chunks/6f13c_next_dist_client_e5d5a3dc._.js",
+      "static/chunks/6f13c_next_dist_217dd298._.js",
+      "static/chunks/6f13c_next_0c0c1ce4._.js",
+      "static/chunks/6f13c_react-dom_2bc0e490._.js",
+      "static/chunks/6f13c_92049d3c._.js",
+      "static/chunks/[root-of-the-server]__28eb0f91._.js",
+      "static/chunks/Desktop_Upload_Trashverse_web_pages_login_2da965e7._.js",
+      "static/chunks/turbopack-Desktop_Upload_Trashverse_web_pages_login_1a49fb4a._.js"
+    ],
+    "/sign-in": [
+      "static/chunks/6f13c_next_dist_compiled_9ad87c03._.js",
+      "static/chunks/6f13c_next_dist_shared_lib_94253963._.js",
+      "static/chunks/6f13c_next_dist_client_e5d5a3dc._.js",
+      "static/chunks/6f13c_next_dist_217dd298._.js",
+      "static/chunks/6f13c_next_link_9b06b0cf.js",
+      "static/chunks/6f13c_react-dom_2bc0e490._.js",
+      "static/chunks/6f13c_39a16139._.js",
+      "static/chunks/[root-of-the-server]__fc3ec00b._.js",
+      "static/chunks/Desktop_Upload_Trashverse_web_pages_sign-in_2da965e7._.js",
+      "static/chunks/turbopack-Desktop_Upload_Trashverse_web_pages_sign-in_3bc036e4._.js"
+    ]
   },
   "devFiles": [],
   "polyfillFiles": [],

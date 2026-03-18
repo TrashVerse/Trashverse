@@ -6,16 +6,16 @@
   "rootMainFiles": [],
   "pages": {
     "/sign-in": [
-      "static/chunks/63dc4_next_dist_compiled_fb16eb28._.js",
-      "static/chunks/63dc4_next_dist_shared_lib_05faf887._.js",
-      "static/chunks/63dc4_next_dist_client_e2e5a7c5._.js",
-      "static/chunks/63dc4_next_dist_2b10054a._.js",
-      "static/chunks/63dc4_next_link_27376f5e.js",
-      "static/chunks/63dc4_react-dom_e89ff5ad._.js",
-      "static/chunks/63dc4_9833d852._.js",
-      "static/chunks/[root-of-the-server]__0d80a24b._.js",
-      "static/chunks/Desktop_TrashVerseWeb-updated_pages_sign-in_2da965e7._.js",
-      "static/chunks/turbopack-Desktop_TrashVerseWeb-updated_pages_sign-in_eefd4f2b._.js"
+      "static/chunks/6f13c_next_dist_compiled_9ad87c03._.js",
+      "static/chunks/6f13c_next_dist_shared_lib_94253963._.js",
+      "static/chunks/6f13c_next_dist_client_e5d5a3dc._.js",
+      "static/chunks/6f13c_next_dist_217dd298._.js",
+      "static/chunks/6f13c_next_link_9b06b0cf.js",
+      "static/chunks/6f13c_react-dom_2bc0e490._.js",
+      "static/chunks/6f13c_39a16139._.js",
+      "static/chunks/[root-of-the-server]__fc3ec00b._.js",
+      "static/chunks/Desktop_Upload_Trashverse_web_pages_sign-in_2da965e7._.js",
+      "static/chunks/turbopack-Desktop_Upload_Trashverse_web_pages_sign-in_3bc036e4._.js"
     ]
   },
   "ampFirstPages": []
