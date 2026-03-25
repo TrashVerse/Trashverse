@@ -23,15 +23,17 @@ export default function HeroSection() {
               for a sustainable ecosystem.
             </p>
 
-            <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <div className="mt-8 flex flex-row sm:flex-row gap-4 justify-center lg:justify-start">
               <secbutton className="bg-green-600 text-white px-8 py-3 rounded-full font-bold hover:bg-green-700 transition shadow-md">
-                <Link href="/">
+                <Link href="/login">
                 Schedule Pickup
                 </Link>
               </secbutton>
 
               <mobutton className="border-2 border-green-600 text-green-600 px-8 py-3 rounded-full font-bold hover:bg-green-50 transition shadow-md">
+                <Link href="blog">
                 Learn More
+                </Link>
               </mobutton>
             </div>
           </div>

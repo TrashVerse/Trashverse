@@ -19,7 +19,7 @@ export default function JoinTeam() {
       {/* Right-aligned highlight section */}
       <div>
         <div className="max-w h-23 max-auto bg-green-100 border border-green-200 rounded-lg p-8 mb-8 md:p-10 lg:p-12">
-          <h4t className="text-2xl font-semibold text-green-800 mb-3 ml-2.5 mt-2">
+          <h4t className="text-lg font-semibold text-green-800 mb-3 ml-2.5 mt-2">
             We are hiring Recycling Agent!
           </h4t> 
 

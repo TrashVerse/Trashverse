@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/DELL/Desktop/Upload/Trashverse/web/utils/api.js"],"sourcesContent":["// utils/api.js\r\nexport const BASE_URL = \"https://trashverse.onrender.com\"; // your Render backend\r\n\r\n// Returns headers with JWT token if available\r\nexport const getAuthHeader = () => {\r\n  const token = localStorage.getItem(\"trashverse_token\");\r\n  return token ? { Authorization: `Bearer ${token}` } : {};\r\n};"],"names":[],"mappings":"AAAA,eAAe;;;;;;;AACR,MAAM,WAAW,mCAAmC,sBAAsB;AAG1E,MAAM,gBAAgB;IAC3B,MAAM,QAAQ,aAAa,OAAO,CAAC;IACnC,OAAO,QAAQ;QAAE,eAAe,CAAC,OAAO,EAAE,OAAO;IAAC,IAAI,CAAC;AACzD"}}]
+}

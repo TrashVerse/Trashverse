@@ -612,7 +612,7 @@ __turbopack_context__.s([
     "getAuthHeader",
     ()=>getAuthHeader
 ]);
-const BASE_URL = "https://trashverse.onrender.com"; // your backend URL
+const BASE_URL = "https://trashverse.onrender.com"; // your Render backend
 const getAuthHeader = ()=>{
     const token = localStorage.getItem("trashverse_token");
     return token ? {

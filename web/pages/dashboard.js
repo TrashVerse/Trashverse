@@ -1,234 +1,183 @@
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import { Calendar, Clock, Trash2, LogOut } from "lucide-react";
-import DashboardLayout from "../components/DashboardLayout";
-import { BASE_URL, getAuthHeader } from "../utils/api"; // Make sure this exists
+import React, { useState } from 'react';
+import { Truck, Clock, Calendar, Menu, X, Leaf } from 'lucide-react';
 
-export default function Dashboard() {
-  const [pickupDate, setPickupDate] = useState("");
-  const [pickupTime, setPickupTime] = useState("");
-  const [trashType, setTrashType] = useState("");
-  const [userHistory, setUserHistory] = useState([]);
-  const [totalEarnings, setTotalEarnings] = useState(0);
-  const [totalPickups, setTotalPickups] = useState(0);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+const trashTypes = [
+  { name: 'Can Trash', price: '₦500/kg', color: 'bg-emerald-500' },
+  { name: 'Paper Trash', price: '₦300/kg', color: 'bg-orange-500' },
+  { name: 'Glass Trash', price: '₦200/kg', color: 'bg-blue-500' },
+  { name: 'Organic Trash', price: '₦100/kg', color: 'bg-lime-500' },
+];
 
-  const trashPrices = {
-    can: 500,
-    paper: 300,
-    glass: 200,
-    organic: 100,
-  };
+export default function TrashverseDashboard() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [selectedDate, setSelectedDate] = useState('');
+  const [selectedTime, setSelectedTime] = useState('');
+  const [trashType, setTrashType] = useState('');
 
-  // Fetch dashboard data from backend
-  useEffect(() => {
-  async function fetchDashboard() {
-    try {
-      const res = await fetch(`${BASE_URL}/api/dashboard`, {
-        headers: {
-          "Content-Type": "application/json",
-          ...getAuthHeader(),
-        },
-      });
-
-      if (!res.ok) {
-        throw new Error(`Failed to fetch dashboard data: ${res.status}`);
-      }
-
-      const data = await res.json();
-
-      // Expected backend response: { history: [...], totalEarnings: 12500, totalPickups: 3 }
-      setUserHistory(data.history || []);
-      setTotalEarnings(data.totalEarnings || 0);
-      setTotalPickups(data.totalPickups || 0);
-    } catch (err) {
-      console.error(err);
-      setError(err.message || "Failed to fetch");
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  fetchDashboard();
-  }, []);
-
-const handleSchedulePickup = async (e) => {
-  e.preventDefault();
-
-  try {
-const res = await fetch(`${BASE_URL}/api/pickup`, {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-    ...getAuthHeader(),
-  },
-  body: JSON.stringify({ date: pickupDate, time: pickupTime, type: trashType }),
-});
-
-    if (!res.ok) {
-      throw new Error(`Failed to schedule pickup: ${res.status}`);
-    }
-
-    const newPickup = await res.json();
-    setUserHistory((prev) => [newPickup, ...prev]);
-    setTotalPickups((prev) => prev + 1);
-    setTotalEarnings((prev) => prev + (trashPrices[trashType] || 0));
-
-    alert("Pickup scheduled successfully!");
-    setPickupDate("");
-    setPickupTime("");
-    setTrashType("");
-  } catch (err) {
-    console.error(err);
-    alert(err.message);
-  }
-};
+  const navItems = [
+    { icon: Truck, label: 'Pickup', active: true },
+    { icon: Clock, label: 'History' },
+    // { icon: BarChart3, label: 'Pricing' },
+  ];
 
   return (
-    <DashboardLayout>
-      <div className="min-h-screen bg-gray-100">
-
-        {/* HEADER */}
-        <header className="bg-white shadow-sm">
-          <div className="container-x py-4 flex justify-between items-center">
-            <div className="flex items-center space-x-2">
-              <img src="/images/logo.png" className="w-8 h-8" />
-              <h1 className="text-xl font-bold text-green-600">TrashVerse</h1>
-            </div>
-
-            <div className="flex items-center gap-4">
-              <div className="w-9 h-9 bg-gray-300 rounded-full"></div>
-              <Link href="/login" className="flex items-center text-gray-600 hover:text-red-500">
-                <LogOut size={18} />
-              </Link>
-            </div>
+    <div className="min-h-screen bg-zinc-950 text-white">
+      {/* Top Header */}
+      <header className="bg-emerald-600 px-6 py-4 flex items-center justify-between sticky top-0 z-50">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 bg-white rounded-2xl flex items-center justify-center">
+            <Leaf className="w-6 h-6 text-emerald-600" />
           </div>
-        </header>
-
-        <div className="container-x py-8">
-
-          {/* TOP STATS */}
-          <div className="grid md:grid-cols-2 gap-4 mb-8">
-            <div className="bg-white p-5 rounded-2xl shadow-md">
-              <p className="text-gray-500">Total Earnings</p>
-              <h2 className="text-2xl font-bold text-green-600">₦{totalEarnings}</h2>
-            </div>
-
-            <div className="bg-white p-5 rounded-2xl shadow-md">
-              <p className="text-gray-500">Total Pickups</p>
-              <h2 className="text-2xl font-bold">{totalPickups}</h2>
-            </div>
+          <div>
+            <h1 className="font-bold text-2xl tracking-tight">Trashverse</h1>
+            <p className="text-xs opacity-75 -mt-1">Smart Waste Collection</p>
           </div>
-
-          {/* MAIN GRID */}
-          <div className="grid lg:grid-cols-2 gap-8">
-
-            {/* SCHEDULE */}
-            <div className="bg-white rounded-2xl shadow-md p-6">
-              <h2 className="text-xl font-semibold mb-4 flex items-center">
-                <Calendar className="mr-2 text-green-600" />
-                Schedule Pickup
-              </h2>
-
-              <form onSubmit={handleSchedulePickup} className="space-y-4">
-                <input
-                  type="date"
-                  value={pickupDate}
-                  onChange={(e) => setPickupDate(e.target.value)}
-                  className="w-full p-2 border rounded-md"
-                  required
-                />
-
-                <input
-                  type="time"
-                  value={pickupTime}
-                  onChange={(e) => setPickupTime(e.target.value)}
-                  className="w-full p-2 border rounded-md"
-                  required
-                />
-
-                <select
-                  value={trashType}
-                  onChange={(e) => setTrashType(e.target.value)}
-                  className="w-full p-2 border rounded-md"
-                  required
-                >
-                  <option value="">Select trash type</option>
-                  <option value="can">Can Trash</option>
-                  <option value="paper">Paper Trash</option>
-                  <option value="glass">Glass Trash</option>
-                  <option value="organic">Organic Trash</option>
-                </select>
-
-                <button className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-xl flex items-center justify-center">
-                  <Trash2 className="mr-2" size={18} />
-                  Schedule Pickup
-                </button>
-              </form>
-            </div>
-
-            {/* PRICING */}
-            <div className="bg-white rounded-2xl shadow-md p-6">
-              <h2 className="text-xl font-semibold mb-4">
-                Trash Pricing (₦ / kg)
-              </h2>
-
-              {Object.entries(trashPrices).map(([type, price]) => (
-                <div
-                  key={type}
-                  className="flex justify-between items-center p-3 bg-gray-50 rounded-lg mb-2"
-                >
-                  <span className="capitalize">{type} Trash</span>
-                  <span className="text-green-600 font-bold">
-                    ₦{price}/kg
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* HISTORY SECTION */}
-          <div className="mt-8 bg-white rounded-2xl shadow-md p-6">
-            <h2 className="text-xl font-semibold mb-4 flex items-center">
-              <Clock className="mr-2 text-green-600" />
-              Pickup History
-            </h2>
-
-            {userHistory.length === 0 ? (
-              <p className="text-gray-500">No pickups yet.</p>
-            ) : (
-              <table className="w-full text-left">
-                <thead>
-                  <tr className="text-gray-500 text-sm border-b">
-                    <th className="py-2">Date</th>
-                    <th>Type</th>
-                    <th>Kg</th>
-                    <th>Amount</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {userHistory.map((item, i) => (
-                    <tr key={i} className="border-b">
-                      <td className="py-2">{item.date}</td>
-                      <td>{item.type}</td>
-                      <td>{item.kg}</td>
-                      <td>₦{item.amount}</td>
-                      <td>
-                        <span className={item.status === "Completed" ? "text-green-600" : "text-yellow-500"}>
-                          {item.status}
-                        </span>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            )}
-          </div>
-
         </div>
+
+        <div className="flex items-center gap-6">
+          <div className="hidden md:flex items-center gap-3 bg-white/10 px-5 py-2 rounded-3xl">
+            <span className="text-sm">Hi, Wisdom</span>
+            <div className="w-9 h-9 bg-white text-emerald-700 rounded-full flex items-center justify-center font-bold">U</div>
+          </div>
+
+          <button 
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden p-2"
+          >
+            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
+      </header>
+
+      <div className="flex flex-1">
+        {/* Desktop Sidebar */}
+        <aside className="hidden md:block w-72 bg-zinc-900 border-r border-zinc-800 h-screen sticky top-16 overflow-auto">
+          <nav className="p-6 space-y-2">
+            {navItems.map((item, index) => (
+              <a
+                key={index}
+                href="#"
+                className={`flex items-center gap-4 px-6 py-4 rounded-2xl text-base font-medium transition-all ${
+                  item.active 
+                    ? 'bg-emerald-600 text-white' 
+                    : 'hover:bg-zinc-800 text-zinc-300'
+                }`}
+              >
+                <item.icon className="w-5 h-5" />
+                {item.label}
+              </a>
+            ))}
+          </nav>
+
+          <div className="absolute bottom-8 left-6 right-6 p-6 bg-zinc-950 rounded-3xl border border-zinc-800">
+            <div className="text-zinc-400 text-sm">Total Earnings</div>
+            <div className="text-4xl font-bold text-emerald-400 mt-2">₦0</div>
+          </div>
+        </aside>
+
+        {/* Main Content */}
+        <main className="flex-1 p-6 md:p-10 overflow-auto">
+          <div className="max-w-2xl mx-auto">
+            {/* Welcome */}
+            <div className="mb-10">
+              <div className="flex items-center gap-4">
+                <h2 className="text-2xl font-bold">Welcome back, User</h2>
+              </div>
+              <p className="text-zinc-400 m-auto text-lg">Manage your waste pickups and earnings</p>
+            </div>
+
+            {/* Pickups Card */}
+            <div className="bg-zinc-900 rounded-2xl p-8 border border-zinc-800 mb-12 mt-6">
+              <div className="flex items-center gap-4">
+                <Truck className="w-10 h-10 text-emerald-500" />
+                <div>
+                  <div className="text-3xl font-bold">0</div>
+                  <div className="text-zinc-400 mt-1">Pickups</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Schedule Pickup */}
+            <div className="bg-zinc-900 rounded-3xl p-8 border border-zinc-800 mb-12">
+              <h3 className="text-2xl font-semibold mb-8 flex items-center gap-3">
+                <Calendar className="w-7 h-7 text-emerald-500" />
+                Schedule Pickup
+              </h3>
+
+              <div className="grid md:grid-cols-3 gap-6">
+                <div>
+                  <label className="block text-zinc-400 text-sm mb-3">Pickup Date</label>
+                  <input 
+                    type="date" 
+                    value={selectedDate}
+                    onChange={(e) => setSelectedDate(e.target.value)}
+                    className="w-full bg-zinc-950 border border-zinc-700 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-emerald-500"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-zinc-400 text-sm mb-3">Pickup Time</label>
+                  <input 
+                    type="time" 
+                    value={selectedTime}
+                    onChange={(e) => setSelectedTime(e.target.value)}
+                    className="w-full bg-zinc-950 border border-zinc-700 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-emerald-500"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-zinc-400 text-sm mb-3">Trash Type</label>
+                  <select 
+                    value={trashType}
+                    onChange={(e) => setTrashType(e.target.value)}
+                    className="w-full bg-zinc-950 border border-zinc-700 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-emerald-500"
+                  >
+                    <option value="">Select trash type</option>
+                    {trashTypes.map((t, i) => (
+                      <option key={i} value={t.name}>{t.name}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <button className="mt-10 w-full bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 transition-all font-semibold py-5 rounded-3xl text-lg shadow-2xl shadow-emerald-500/30">
+                Confirm Pickup
+              </button>
+            </div>
+
+            {/* Trash Pricing */}
+            <div className="bg-zinc-900 rounded-3xl p-8 border border-zinc-800">
+              <h3 className="text-2xl font-semibold mb-8">Trash Pricing</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {trashTypes.map((item, i) => (
+                  <div 
+                    key={i} 
+                    className="bg-zinc-950 rounded-3xl p-8 border border-zinc-800 hover:border-emerald-500 transition-all group"
+                  >
+                    <div className={`w-16 h-16 ${item.color} rounded-2xl mb-6 group-hover:scale-110 transition-transform`} />
+                    <div className="font-semibold text-xl">{item.name}</div>
+                    <div className="text-4xl font-bold text-emerald-400 mt-3">{item.price}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </main>
       </div>
-    </DashboardLayout>
+
+      Mobile Bottom Navigation
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-zinc-900 border-t border-zinc-800 py-4 px-6 flex justify-around z-50">
+        {navItems.map((item, i) => (
+          <a 
+            key={i} 
+            href="#" 
+            className={`flex flex-col items-center gap-1 ${item.active ? 'text-emerald-500' : 'text-zinc-400'}`}
+          >
+            <item.icon className="w-6 h-6" />
+            <span className="text-xs font-medium">{item.label}</span>
+          </a>
+        ))}
+      </nav>
+    </div>
   );
 }

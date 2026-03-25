@@ -5,26 +5,10 @@ const mod = __turbopack_context__.x("react/jsx-dev-runtime", () => require("reac
 
 module.exports = mod;
 }),
-"[project]/Desktop/Upload/Trashverse/web/pages/_app.js [ssr] (ecmascript)", ((__turbopack_context__) => {
-"use strict";
+"[project]/Desktop/Upload/Trashverse/web/pages/_app.js [ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
 
-__turbopack_context__.s([
-    "default",
-    ()=>MyApp
-]);
-var __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__ = __turbopack_context__.i("[externals]/react/jsx-dev-runtime [external] (react/jsx-dev-runtime, cjs)");
-;
-;
-function MyApp({ Component, pageProps }) {
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(Component, {
-        ...pageProps
-    }, void 0, false, {
-        fileName: "[project]/Desktop/Upload/Trashverse/web/pages/_app.js",
-        lineNumber: 4,
-        columnNumber: 10
-    }, this);
-}
+const e = new Error("Could not parse module '[project]/Desktop/Upload/Trashverse/web/pages/_app.js'\n\nExpected 'from', got 'export'");
+e.code = 'MODULE_UNPARSABLE';
+throw e;
 }),
 ];
-
-//# sourceMappingURL=%5Broot-of-the-server%5D__5903ed91._.js.map

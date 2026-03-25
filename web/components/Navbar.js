@@ -21,12 +21,12 @@ export default function Navbar() {
           <li><Link href="/" className="hover:text-green-600">Why Us</Link></li>
           <li><Link href="/" className="hover:text-green-600">Join Us</Link></li>
           <li><Link href="/" className="hover:text-green-600">Contact</Link></li>
-          <li><Link href="/" className="hover:text-green-600">Blog</Link></li>
+          <li><Link href="/blog" className="hover:text-green-600">Blog</Link></li>
         </ul>
 
         {/* Desktop Button */}
         <Link
-          href="/"
+          href="/login"
           className="hidden md:flex bg-green-600 text-white w-32 h-10 rounded-lg items-center justify-center font-medium hover:bg-green-700"
         >
           Get Started
