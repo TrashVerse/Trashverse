@@ -1,0 +1,15 @@
+__turbopack_load_page_chunks__("/", [
+  "static/chunks/[root-of-the-server]__90f0ef8d._.js",
+  "static/chunks/6f13c_next_dist_compiled_f523dc56._.js",
+  "static/chunks/6f13c_next_dist_shared_lib_147f10e0._.js",
+  "static/chunks/6f13c_next_dist_client_d4ee225b._.js",
+  "static/chunks/6f13c_next_dist_217dd298._.js",
+  "static/chunks/6f13c_next_a5b6eb9b._.js",
+  "static/chunks/6f13c_react-dom_2bc0e490._.js",
+  "static/chunks/6f13c_react-icons_fa_index_mjs_95c31ec5._.js",
+  "static/chunks/6f13c_react-icons_fa6_index_mjs_885ac223._.js",
+  "static/chunks/6f13c_react-icons_lib_16751cd9._.js",
+  "static/chunks/6f13c_cd4ad7a3._.js",
+  "static/chunks/Desktop_Upload_Trashverse_web_pages_index_2da965e7._.js",
+  "static/chunks/turbopack-Desktop_Upload_Trashverse_web_pages_index_0364ece2._.js"
+])

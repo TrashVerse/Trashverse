@@ -1,0 +1,5 @@
+{
+  "/dashboard/profile": [
+    "static/chunks/pages/dashboard/profile.js"
+  ]
+}

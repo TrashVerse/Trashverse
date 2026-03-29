@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 12, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/DELL/Desktop/Upload/Trashverse/web/pages/_app.js"],"sourcesContent":["import '../styles/globals.css'\r\nimport { Toaster } from 'react-hot-toast';\r\n\r\nexport default function MyApp({ Component, pageProps }) {\r\n  return (\r\n  <>\r\n  <Component {...pageProps} />\r\n  <Toaster position=\"top-right\" reverseOrder={false} /> \r\n  </>\r\n  );\r\n}\r\n"],"names":[],"mappings":";;;;;AACA;;;;;;;;AAEe,SAAS,MAAM,EAAE,SAAS,EAAE,SAAS,EAAE;IACpD,qBACA;;0BACA,qKAAC;gBAAW,GAAG,SAAS;;;;;;0BACxB,qKAAC,2PAAO;gBAAC,UAAS;gBAAY,cAAc;;;;;;;;AAG9C"}}]
+}
