@@ -13,8 +13,12 @@ logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 
-# Create database tables
-Base.metadata.create_all(bind=engine)
+# Create database tables (skip if connection fails - for Supabase)
+try:
+    Base.metadata.create_all(bind=engine)
+except Exception as e:
+    logging.warning(f"Could not create tables automatically: {e}")
+    logging.info("Tables should be created manually in Supabase SQL Editor")
 
 # Initialize Firebase (optional - will not crash if credentials missing)
 try:

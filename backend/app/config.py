@@ -16,7 +16,12 @@ class Settings(BaseSettings):
     DEV_EMAIL_RECIPIENT: str = "onyewuchiscepter@gmail.com"
     ENVIRONMENT: str = "development"
     
+    # Supabase configuration (optional)
+    SUPABASE_PROJECT_URL: str = ""
+    SUPABASE_ANON_KEY: str = ""
+    
     class Config:
         env_file = ".env"
+        extra = "allow"  # Allow extra fields from .env
 
 settings = Settings()
