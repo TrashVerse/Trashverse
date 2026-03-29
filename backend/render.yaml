@@ -15,9 +15,11 @@ services:
       - key: ACCESS_TOKEN_EXPIRE_MINUTES
         value: 10080
       - key: DATABASE_URL
-        fromDatabase:
-          name: trashverse-db
-          property: connectionString
+        value: postgresql://postgres:[YOUR-SUPABASE-PASSWORD]@db.gtieccjexcvgrqhbwosd.supabase.co:5432/postgres
+      - key: SUPABASE_PROJECT_URL
+        value: https://gtieccjexcvgrqhbwosd.supabase.co
+      - key: SUPABASE_ANON_KEY
+        value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd0aWVjY2pleGN2Z3JxaGJ3b3NkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ3NDU4NzAsImV4cCI6MjA5MDMyMTg3MH0.K5Uhdhn9CDr-FKoFVbGVkN9-KX4ZmDlinyAxSzjello
       - key: FIREBASE_CREDENTIALS_PATH
         value: ./firebase-credentials.json
       - key: RESEND_API_KEY
@@ -32,9 +34,3 @@ services:
         value: onyewuchiscepter@gmail.com
       - key: ENVIRONMENT
         value: production
-
-databases:
-  - name: trashverse-db
-    databaseName: trashverse
-    user: trashverse_user
-    plan: starter
