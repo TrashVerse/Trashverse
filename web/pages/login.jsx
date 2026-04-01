@@ -2,86 +2,126 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { BASE_URL } from "../utils/api";
 import { Eye, EyeOff } from "lucide-react";
+import toast from "react-hot-toast";  
 
 export default function Login() {
-  const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Simple validation - in a real app, you'd check against a backend
-    if (email && password) {
-      // Simulate successful login
-      router.push("/dashboard");
-    } else {
-      alert("Please enter both email and password");
+  const handleLogin = async (e) => {
+  e.preventDefault();
+  setLoading(true);
+
+  try {
+    const res = await fetch(`${BASE_URL}/api/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+
+    const data = await res.json();
+    console.log("Backend response:", data); // Debugging line
+
+    if (!res.ok) {
+      return toast.error(data.message || "Invalid credentials");
     }
-  };
+
+    if (data.token) {
+      localStorage.setItem("trashverse_token", data.token);
+      toast.success("Login successful!");
+      console.log("Login URL:", `${BASE_URL}/api/login`);
+      router.push("/dashboard");
+    }
+  } catch (err) {
+    toast.error("Network error! Please try again later.");
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
-    <div className="min-h-screen  flex items-center justify-center bg-gray-50 px-6">
-      <div className="bg-white h-80 w-70 rounded-2xl flex flex-col justify-center items-center shadow-xl p-6 sm:p-8 w-80 sm:w-96">
-        <div className="flex flex-row items-center justify-center">
-          <img src="/images/logo.png" alt="TrashVerse Logo" className="w-12 h-10 mb-2" />
-          <h1 className="text-xl sm:text-2xl font-bold text-green-600">Trashverse Login</h1>
-        </div>
+    <div className="min-h-screen flex">
 
-        <h2 className="text-base sm:text-lg text-gray-700 mb-6 text-center font-medium">
-          Login to your account
-        </h2>
+      {/* LEFT SIDE (Branding) */}
+      <div className="hidden md:flex w-1/2 bg-gradient-to-br from-green-600 to-green-900 text-white flex-col justify-center items-center p-10">
+        <h1 className="text-4xl font-bold mb-4">TrashVerse</h1>
+        <p className="text-lg opacity-80 text-center max-w-sm">
+          Smart waste management for a cleaner, greener future 🌱
+        </p>
+      </div>
 
-        <form onSubmit={handleSubmit} className="w-3/4 flex flex-col gap-3 sm:gap-4">
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-full h-10 border border-gray-200 rounded mr-4 text-sm sm:text-sm focus:outline-none focus:ring-2 focus:ring-green-100 focus:border-green-300"
-            required
-          />
+      {/* RIGHT SIDE (Form) */}
+      
+      <divform className="w-95 md:w-1/2 flex justify-center items-center bg-gray-50">
+        <div className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md">
 
-          <div className="relative">
+          <h2 className="text-2xl font-semibold text-center">
+            Welcome Back 
+          </h2>
+
+          <forml onSubmit={handleLogin} className="w-85 h-50 flex flex-col gap-4 justify-center">
+
             <input
-              type={showPassword ? "text" : "password"}
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full h-10 border border-gray-200 rounded px-10 text-sm sm:text-sm focus:outline-none focus:ring-2 focus:ring-green-100 focus:border-green-300"
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               required
+              className="w-full h-10 px-4 py-3  rounded-xl border focus:ring-1 focus:ring-green-500 outline-none text-center justify-center items-center"
             />
+
+            <div className="relative justify-center items-center">
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                className="w-85 h-10 px-4 py-3 rounded-xl border focus:ring-1 focus:ring-green-500 outline-none text-center justify-center items-center"
+              />
+
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 justify-center items-center"
+              >
+                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+              </button>
+            </div>
+
             <button
-              type="button"
-              onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
-              aria-label="Toggle password visibility"
+              disabled={loading}
+              className="bg-green-600 text-white py-2 rounded-xl font-semibold hover:bg-green-700 transition w-85 h-10 flex justify-center items-center"
             >
-              {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+              {loading ? (
+              <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+              ) : (
+              "Login"
+             )}
             </button>
-          </div>
+          </forml>
 
-          <button
-            type="submit"
-            className="w-full mt-2 py-3 rounded-md bg-gradient-to-b from-green-600 to-green-500 text-white font-medium shadow-md hover:from-green-700 hover:to-green-600 transition"
-          >
-            Login
-          </button>
-        </form>
-
-        <div className="w-3/4 mx-auto mt-4">
-          <div className="border-t border-gray-100" />
-          <div className="flex justify-between items-center mt-3 text-sm text-gray-500">
-            <Link href="/forgot-password" className="hover:text-green-600 mr-2 pr-2 border-r border-gray-300">
+          {/* Forgot password */}
+          <p className="text-center mt-4 text-sm ">
+            <Link href="/forgotten" className="text-green-600 hover:underline">
               Forgot Password?
             </Link>
-            <Link href="/signup" className="hover:text-green-600">
-              Sign Up
+          </p>
+
+          {/* Register section */}
+          <p className="text-center mt-4 text-sm text-gray-500">
+            Don’t have an account?{" "}
+            <Link href="/signup" className="text-green-600 font-medium hover:underline">
+              Sign up
             </Link>
-          </div>
+          </p>
         </div>
-      </div>
+      </divform>
     </div>
   );
 }

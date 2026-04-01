@@ -3,24 +3,20 @@ import { Home, User, Clock, LogOut } from "lucide-react";
 
 export default function DashboardLayout({ children }) {
   return (
-    <div className="flex min-h-screen bg-gray-100">
+    <div className="flex min-h-screen bg-zinc-950">
 
       {/* SIDEBAR */}
-      <aside className="w-64 bg-white shadow-md p-5 hidden md:block">
-        <h1 className="text-2xl font-bold text-green-600 mb-8">
+      <aside className="w-80 bg-zinc-950 shadow-md p-5 hidden md:block">
+        <h1 className="text-2xl font-bold text-white mb-8 min-h-[40px] flex items-center gap-2 justify-center bg-emerald-600 rounded-lg">
           TrashVerse
         </h1>
 
         <nav className="space-y-4">
-          <Link href="/dashboard" className="flex items-center gap-2 text-gray-700 hover:text-green-600">
+          <Link href="/dashboard" className="flex items-center gap-2 text-emerald-400 hover:text-emerald-400">
             <Home size={18} /> Dashboard
           </Link>
 
-          <Link href="/dashboard/history" className="flex items-center gap-2 text-gray-700 hover:text-green-600">
-            <Clock size={18} /> History
-          </Link>
-
-          <Link href="/dashboard/profile" className="flex items-center gap-2 text-gray-700 hover:text-green-600">
+          <Link href="/dashboard/profile" className="flex items-center gap-2 text-emerald-400 hover:text-emerald-400">
             <User size={18} /> Profile
           </Link>
 

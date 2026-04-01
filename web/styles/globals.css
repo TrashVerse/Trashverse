@@ -75,24 +75,24 @@ ecoborder {
   border-radius: 12px;
 }
 secbutton {
-  width: 150;
-  height: 45;
+  width: 155px;
+  height: 45px;
   margin-top: 25px;
   text-align: center;
-  border-radius: 10;
+  border-radius: 10px;
   padding-top: 1.5%;
 }
 mobutton {
-  width: 120;
-  height: 45;
+  width: 120px;
+  height: 45px;
   margin-top: 25px;
   text-align: center;
-  border-radius: 10;
+  border-radius: 10px;
   padding-top: 1.5%;
 }
 section2 {
-  padding-left: 42;
-  padding-right: 48;
+  padding-left: 42px;
+  padding-right: 48px;
   /* align-items: center; */
   padding-top: 120px;
   justify-content: center;
@@ -181,21 +181,47 @@ h4t {
   margin-top: 3%;
 }
 divcon {
-  margin-top: 15%;
-  margin-left: 15%;
+  margin-top: 10%;
+  margin-left: 20%;
   justify-content: center;
   align-items: center;
   align-content: center;
 } 
+divspo{
+  margin-top:10%;
+  margin-left: -25%;
+  align-items: center;
+}
+divcop{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin-bottom: 2%;
+}
+divcons{
+  display:flow;
+  margin-bottom: 2%;
+  padding-top: 10%;
+}
+divcop1{
+  display:flow;
+  margin-bottom: 2%;
+  padding-top: 10%;
+}
+divcop2{
+  display:flow;
+  margin-bottom: 2%;
+  padding-top: 10%;
+}
 divcopy {
   display: flex;
   justify-content: center;
   align-content: center;
   margin-top: 7%;
-  margin-bottom: 5%;
+  margin-bottom: 2%;
 }
 h1t {
-  margin-bottom: 5%;
+  margin-bottom: 2%;
 }
 divlog {
   margin-top: 30px;
@@ -204,10 +230,46 @@ divtext {
   margin-top: 13px;
   margin-bottom: 20px;
 }
-/* h1b {
-  color: black;
-  height: 50px;
-  justify-content: center;
+divform{
   align-items: center;
-  margin-left: 6%;
-} */
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  padding-left: 10px;
+}
+forml{
+margin: auto;
+}
+.input {
+  width: 85%;
+  padding: 12px 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  outline: none;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  background: #f9fafb;
+  margin: auto;
+}
+sedbutton {
+  width: 50%;
+  height: 35px;
+  /* margin-top: 5px; */
+  text-align: center;
+  border-radius: 10px;
+  margin-left: 25%;
+  justify-content: center;
+  padding-top: 5px;
+}
+.input:focus {
+  border-color: #16a34a;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.1);
+}
+divpass{
+margin-left: 8%;
+width: 100%;
+}
+pstr{
+  margin: auto;
+}
