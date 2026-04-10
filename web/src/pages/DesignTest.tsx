@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
-import DashboardLayout from '../components/DashboardLayout';
 
 export default function DesignTest() {
   const [measurements, setMeasurements] = useState({
@@ -13,10 +12,10 @@ export default function DesignTest() {
 
   useEffect(() => {
     // Measure navbar
-    const navbar = document.querySelector('nav');
-    const logo = document.querySelector('nav img');
-    const button = document.querySelector('nav a[href="/login"]');
-    const menu = document.querySelector('nav ul');
+    const navbar = document.querySelector('nav') as HTMLElement | null;
+    const logo = document.querySelector('nav img') as HTMLElement | null;
+    const button = document.querySelector('nav a[href="/login"]') as HTMLElement | null;
+    const menu = document.querySelector('nav ul') as HTMLElement | null;
 
     if (navbar && logo && button && menu) {
       setMeasurements({
