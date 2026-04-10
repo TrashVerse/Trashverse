@@ -7,7 +7,7 @@ import ContactUs from "../components/ContactUs";
 
 export default function Home() {
   return (
-    <div className="pt-20">
+    <div className="pt-40">
       <Navbar />
       <HeroSection />
       <CoreSolutions />

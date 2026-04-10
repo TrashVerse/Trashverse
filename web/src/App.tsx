@@ -23,6 +23,17 @@ import Profile from './pages/Profile'
 import Stations from './pages/Stations'
 import Leaderboard from './pages/Leaderboard'
 import Analytics from './pages/Analytics'
+import Admin from './pages/Admin'
+import AdminUsers from './pages/admin/AdminUsers'
+import AdminPickups from './pages/admin/AdminPickups'
+import AdminWaste from './pages/admin/AdminWaste'
+import AdminTransactions from './pages/admin/AdminTransactions'
+import AdminStations from './pages/admin/AdminStations'
+import AdminRewards from './pages/admin/AdminRewards'
+import AdminNotifications from './pages/admin/AdminNotifications'
+import AdminSettings from './pages/admin/AdminSettings'
+import Withdraw from './pages/Withdraw'
+import DesignTest from './pages/DesignTest'
 
 function App() {
   return (
@@ -40,6 +51,7 @@ function App() {
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/recover-account" element={<RecoverAccount />} />
         <Route path="/forgotten" element={<Forgotten />} />
+        <Route path="/design-test" element={<DesignTest />} />
         
         {/* Protected routes */}
         <Route path="/dashboard" element={
@@ -90,6 +102,56 @@ function App() {
         <Route path="/analytics" element={
           <ProtectedRoute>
             <Analytics />
+          </ProtectedRoute>
+        } />
+        <Route path="/admin" element={
+          <ProtectedRoute>
+            <Admin />
+          </ProtectedRoute>
+        } />
+        <Route path="/admin/users" element={
+          <ProtectedRoute>
+            <AdminUsers />
+          </ProtectedRoute>
+        } />
+        <Route path="/admin/pickups" element={
+          <ProtectedRoute>
+            <AdminPickups />
+          </ProtectedRoute>
+        } />
+        <Route path="/admin/waste" element={
+          <ProtectedRoute>
+            <AdminWaste />
+          </ProtectedRoute>
+        } />
+        <Route path="/admin/transactions" element={
+          <ProtectedRoute>
+            <AdminTransactions />
+          </ProtectedRoute>
+        } />
+        <Route path="/admin/stations" element={
+          <ProtectedRoute>
+            <AdminStations />
+          </ProtectedRoute>
+        } />
+        <Route path="/admin/rewards" element={
+          <ProtectedRoute>
+            <AdminRewards />
+          </ProtectedRoute>
+        } />
+        <Route path="/admin/notifications" element={
+          <ProtectedRoute>
+            <AdminNotifications />
+          </ProtectedRoute>
+        } />
+        <Route path="/admin/settings" element={
+          <ProtectedRoute>
+            <AdminSettings />
+          </ProtectedRoute>
+        } />
+        <Route path="/withdraw" element={
+          <ProtectedRoute>
+            <Withdraw />
           </ProtectedRoute>
         } />
         

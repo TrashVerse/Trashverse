@@ -31,6 +31,18 @@ export interface PickupResponse {
   updated_at: string;
 }
 
+export interface PickupUpdate {
+  pickup_address?: string;
+  pickup_latitude?: number;
+  pickup_longitude?: number;
+  waste_type?: WasteType;
+  estimated_weight_kg?: number;
+  actual_weight_kg?: number;
+  scheduled_date?: string;
+  notes?: string;
+  status?: PickupStatus;
+}
+
 export const pickupService = {
   async schedulePickup(data: PickupCreate): Promise<PickupResponse> {
     const response = await api.post('/api/pickups/', data);
@@ -49,7 +61,7 @@ export const pickupService = {
     return response.data;
   },
 
-  async updatePickup(id: number, data: Partial<PickupCreate>): Promise<PickupResponse> {
+  async updatePickup(id: number, data: PickupUpdate): Promise<PickupResponse> {
     const response = await api.put(`/api/pickups/${id}`, data);
     return response.data;
   },

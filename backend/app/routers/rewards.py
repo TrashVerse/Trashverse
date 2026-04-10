@@ -95,11 +95,10 @@ def redeem_reward(
 @router.post("/", response_model=schemas.RewardResponse, status_code=status.HTTP_201_CREATED)
 def create_reward(
     reward: schemas.RewardCreate,
-    current_user: models.User = Depends(auth.get_current_active_user),
+    current_user: models.User = Depends(auth.get_current_admin_user),
     db: Session = Depends(get_db)
 ):
     """Create a new reward (admin only)"""
-    # In production, add role check here
     db_reward = models.Reward(**reward.model_dump())
     db.add(db_reward)
     db.commit()

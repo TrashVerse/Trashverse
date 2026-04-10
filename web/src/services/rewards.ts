@@ -14,6 +14,16 @@ export interface Reward {
   created_at: string;
 }
 
+export interface RewardCreate {
+  name: string;
+  description?: string;
+  points_required: number;
+  reward_type: string;
+  reward_value: number;
+  image_url?: string;
+  stock_quantity: number;
+}
+
 export const rewardService = {
   async getRewards(skip = 0, limit = 50, available_only = false): Promise<Reward[]> {
     const response = await api.get('/api/rewards/', {
@@ -24,6 +34,11 @@ export const rewardService = {
 
   async getReward(id: number): Promise<Reward> {
     const response = await api.get(`/api/rewards/${id}`);
+    return response.data;
+  },
+
+  async createReward(data: RewardCreate): Promise<Reward> {
+    const response = await api.post('/api/rewards/', data);
     return response.data;
   },
 

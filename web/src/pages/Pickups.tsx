@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { pickupService, PickupResponse, PickupCreate } from '../services/pickups';
+import { pickupService, PickupResponse } from '../services/pickups';
 import { WasteType } from '../services/waste';
 import DashboardLayout from '../components/DashboardLayout';
 
@@ -8,12 +8,23 @@ export default function Pickups() {
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
   const [editingPickup, setEditingPickup] = useState<PickupResponse | null>(null);
-  const [formData, setFormData] = useState<PickupCreate>({
+  const [formData, setFormData] = useState<{
+    pickup_address: string;
+    waste_type: WasteType;
+    estimated_weight_kg: number;
+    notes: string;
+    status?: 'pending' | 'scheduled' | 'in_progress' | 'completed' | 'cancelled';
+  }>({
     pickup_address: '',
     waste_type: 'plastic',
     estimated_weight_kg: 0,
     notes: '',
   });
+  
+  // Search and filter states
+  const [searchTerm, setSearchTerm] = useState('');
+  const [statusFilter, setStatusFilter] = useState<string>('all');
+  const [wasteTypeFilter, setWasteTypeFilter] = useState<string>('all');
 
   useEffect(() => {
     loadPickups();
@@ -47,6 +58,7 @@ export default function Pickups() {
         waste_type: 'plastic',
         estimated_weight_kg: 0,
         notes: '',
+        status: undefined,
       });
       loadPickups();
     } catch (error: any) {
@@ -61,6 +73,7 @@ export default function Pickups() {
       waste_type: pickup.waste_type as WasteType || 'plastic',
       estimated_weight_kg: pickup.estimated_weight_kg || 0,
       notes: pickup.notes || '',
+      status: pickup.status as any,
     });
     setShowForm(true);
   };
@@ -85,6 +98,7 @@ export default function Pickups() {
       waste_type: 'plastic',
       estimated_weight_kg: 0,
       notes: '',
+      status: undefined,
     });
   };
 
@@ -98,6 +112,36 @@ export default function Pickups() {
     };
     return colors[status] || 'bg-gray-100 text-gray-800';
   };
+
+  // Filter pickups
+  const filteredPickups = pickups.filter((pickup) => {
+    // Status filter
+    if (statusFilter !== 'all' && pickup.status !== statusFilter) return false;
+    
+    // Waste type filter
+    if (wasteTypeFilter !== 'all' && pickup.waste_type !== wasteTypeFilter) return false;
+    
+    // Search term (address or notes)
+    if (searchTerm) {
+      const searchLower = searchTerm.toLowerCase();
+      const matchesAddress = pickup.pickup_address.toLowerCase().includes(searchLower);
+      const matchesNotes = pickup.notes?.toLowerCase().includes(searchLower);
+      if (!matchesAddress && !matchesNotes) return false;
+    }
+    
+    return true;
+  });
+
+  const clearFilters = () => {
+    setSearchTerm('');
+    setStatusFilter('all');
+    setWasteTypeFilter('all');
+  };
+
+  const activeFiltersCount = 
+    (searchTerm ? 1 : 0) + 
+    (statusFilter !== 'all' ? 1 : 0) + 
+    (wasteTypeFilter !== 'all' ? 1 : 0);
 
   if (loading) {
     return (
@@ -173,6 +217,24 @@ export default function Pickups() {
                   />
                 </div>
               </div>
+              {editingPickup && (
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Status</label>
+                  <select
+                    value={formData.status}
+                    onChange={(e) =>
+                      setFormData({ ...formData, status: e.target.value as any })
+                    }
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
+                  >
+                    <option value="pending">Pending</option>
+                    <option value="scheduled">Scheduled</option>
+                    <option value="in_progress">In Progress</option>
+                    <option value="completed">Completed</option>
+                    <option value="cancelled">Cancelled</option>
+                  </select>
+                </div>
+              )}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Notes</label>
                 <textarea
@@ -192,13 +254,79 @@ export default function Pickups() {
           </div>
         )}
 
+        {/* Search and Filter Section */}
+        {!showForm && (
+          <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <div className="md:col-span-2">
+                <label className="block text-sm font-medium text-gray-700 mb-2">Search</label>
+                <input
+                  type="text"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  placeholder="Search by address or notes..."
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
+                />
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Status</label>
+                <select
+                  value={statusFilter}
+                  onChange={(e) => setStatusFilter(e.target.value)}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
+                >
+                  <option value="all">All Status</option>
+                  <option value="pending">Pending</option>
+                  <option value="scheduled">Scheduled</option>
+                  <option value="in_progress">In Progress</option>
+                  <option value="completed">Completed</option>
+                  <option value="cancelled">Cancelled</option>
+                </select>
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Waste Type</label>
+                <select
+                  value={wasteTypeFilter}
+                  onChange={(e) => setWasteTypeFilter(e.target.value)}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
+                >
+                  <option value="all">All Types</option>
+                  <option value="plastic">Plastic</option>
+                  <option value="paper">Paper</option>
+                  <option value="metal">Metal</option>
+                  <option value="electronics">Electronics</option>
+                  <option value="glass">Glass</option>
+                  <option value="organic">Organic</option>
+                  <option value="textile">Textile</option>
+                </select>
+              </div>
+            </div>
+            
+            <div className="flex justify-between items-center mt-4">
+              <div className="text-sm text-gray-600">
+                Showing {filteredPickups.length} of {pickups.length} pickups
+              </div>
+              <button
+                onClick={clearFilters}
+                className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition"
+              >
+                Clear Filters {activeFiltersCount > 0 && `(${activeFiltersCount})`}
+              </button>
+            </div>
+          </div>
+        )}
+
         <div className="space-y-4">
-          {pickups.length === 0 ? (
+          {filteredPickups.length === 0 ? (
             <div className="bg-white rounded-lg shadow-md p-12 text-center">
-              <p className="text-gray-500">No pickups scheduled yet</p>
+              <p className="text-gray-500">
+                {pickups.length === 0 ? 'No pickups scheduled yet' : 'No pickups match your filters'}
+              </p>
             </div>
           ) : (
-            pickups.map((pickup) => (
+            filteredPickups.map((pickup) => (
               <div key={pickup.id} className="bg-white rounded-lg shadow-md p-6">
                 <div className="flex justify-between items-start mb-4">
                   <div>

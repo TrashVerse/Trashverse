@@ -15,6 +15,18 @@ export interface RecyclingStation {
   distance_km?: number;
 }
 
+export interface StationCreate {
+  name: string;
+  address: string;
+  city: string;
+  latitude: number;
+  longitude: number;
+  phone?: string;
+  email?: string;
+  accepted_waste_types?: string;
+  operating_hours?: string;
+}
+
 export const stationService = {
   async getStations(
     latitude?: number,
@@ -31,6 +43,11 @@ export const stationService = {
     const response = await api.get(`/api/stations/${id}`, {
       params: { latitude, longitude },
     });
+    return response.data;
+  },
+
+  async createStation(data: StationCreate): Promise<RecyclingStation> {
+    const response = await api.post('/api/stations/', data);
     return response.data;
   },
 

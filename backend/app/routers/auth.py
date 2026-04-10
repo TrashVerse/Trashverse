@@ -71,6 +71,16 @@ def get_current_user_info(
     """Get current user information"""
     return current_user
 
+@router.get("/me/is-admin")
+def check_admin_status(
+    current_user: models.User = Depends(auth.get_current_active_user)
+):
+    """Check if current user is an admin"""
+    return {
+        "is_admin": auth.is_admin(current_user),
+        "role": current_user.role
+    }
+
 @router.put("/me", response_model=schemas.UserResponse)
 def update_current_user(
     user_update: schemas.UserUpdate,

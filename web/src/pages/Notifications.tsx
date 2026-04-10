@@ -1,11 +1,29 @@
 import { useEffect, useState } from 'react';
 import { notificationService, Notification } from '../services/notifications';
 import DashboardLayout from '../components/DashboardLayout';
+import { useRealtimeNotifications } from '../hooks/useRealtimeNotifications';
+import { Bell } from 'lucide-react';
 
 export default function Notifications() {
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState<'all' | 'unread'>('all');
+  const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState('');
+
+  // Get user ID from localStorage
+  const userStr = localStorage.getItem('user');
+  const userId = userStr ? JSON.parse(userStr).id : null;
+
+  // Setup real-time notifications
+  useRealtimeNotifications(userId, (newNotification) => {
+    setToastMessage(`${newNotification.title}: ${newNotification.body}`);
+    setShowToast(true);
+    setTimeout(() => setShowToast(false), 5000);
+    
+    // Reload notifications to show the new one
+    loadNotifications();
+  });
 
   useEffect(() => {
     loadNotifications();
@@ -73,6 +91,24 @@ export default function Notifications() {
   return (
     <DashboardLayout>
       <div>
+        {/* Real-time Toast Notification */}
+        {showToast && (
+          <div className="fixed top-4 right-4 z-50 animate-slide-in">
+            <div className="bg-green-600 text-white px-6 py-4 rounded-lg shadow-lg flex items-start gap-3 max-w-md">
+              <Bell className="w-5 h-5 mt-0.5 flex-shrink-0" />
+              <div className="flex-1">
+                <p className="font-medium text-sm">{toastMessage}</p>
+              </div>
+              <button
+                onClick={() => setShowToast(false)}
+                className="text-white hover:text-gray-200"
+              >
+                ✕
+              </button>
+            </div>
+          </div>
+        )}
+
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-bold text-gray-900">Notifications</h1>
           <div className="flex gap-4">
@@ -140,8 +176,7 @@ export default function Notifications() {
             ))
           )}
         </div>
-        </div>
-
-      </DashboardLayout>
+      </div>
+    </DashboardLayout>
   );
 }

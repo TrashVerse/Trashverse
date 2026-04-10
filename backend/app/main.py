@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from .database import engine, Base
-from .routers import auth, waste, transactions, stations, pickups, analytics, notifications, rewards, upload
+from .routers import auth, waste, transactions, stations, pickups, analytics, notifications, rewards, upload, admin
 from .firebase import initialize_firebase
 import os
 import logging
@@ -73,6 +73,7 @@ app.include_router(analytics.router)
 app.include_router(notifications.router)
 app.include_router(rewards.router)
 app.include_router(upload.router)
+app.include_router(admin.router)
 
 @app.get("/")
 def root():

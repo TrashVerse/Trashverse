@@ -7,6 +7,8 @@ export interface WasteEntry {
   weight_kg: number;
   description?: string;
   image_url?: string;
+  latitude?: number;
+  longitude?: number;
 }
 
 export interface WasteEntryResponse {

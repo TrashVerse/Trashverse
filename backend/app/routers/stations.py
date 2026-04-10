@@ -63,11 +63,10 @@ def get_recycling_station(
 @router.post("/", response_model=schemas.RecyclingStationResponse, status_code=status.HTTP_201_CREATED)
 def create_recycling_station(
     station: schemas.RecyclingStationCreate,
-    current_user: models.User = Depends(auth.get_current_active_user),
+    current_user: models.User = Depends(auth.get_current_admin_user),
     db: Session = Depends(get_db)
 ):
     """Create a new recycling station (admin only)"""
-    # In production, add role check here
     db_station = models.RecyclingStation(**station.model_dump())
     db.add(db_station)
     db.commit()

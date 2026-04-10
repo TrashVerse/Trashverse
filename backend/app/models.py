@@ -200,3 +200,15 @@ class Reward(Base):
     stock_quantity = Column(Integer, default=0)
     
     created_at = Column(DateTime, default=datetime.utcnow)
+
+
+class SystemSettings(Base):
+    __tablename__ = "system_settings"
+    
+    id = Column(Integer, primary_key=True, index=True)
+    key = Column(String, unique=True, nullable=False, index=True)
+    value = Column(Text, nullable=False)  # JSON string
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    updated_by = Column(Integer, ForeignKey("users.id"), nullable=True)
+    
+    updater = relationship("User")

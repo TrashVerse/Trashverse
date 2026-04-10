@@ -10,6 +10,12 @@ export default function Transactions() {
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<'transactions' | 'entries'>('transactions');
   const [selectedEntry, setSelectedEntry] = useState<WasteEntryResponse | null>(null);
+  
+  // Search and filter states
+  const [searchTerm, setSearchTerm] = useState('');
+  const [typeFilter, setTypeFilter] = useState<string>('all');
+  const [wasteTypeFilter, setWasteTypeFilter] = useState<string>('all');
+  const [dateRange, setDateRange] = useState({ start: '', end: '' });
 
   useEffect(() => {
     loadData();
@@ -62,6 +68,55 @@ export default function Transactions() {
       minute: '2-digit',
     });
   };
+
+  // Filter transactions
+  const filteredTransactions = transactions.filter((tx) => {
+    // Type filter
+    if (typeFilter !== 'all' && tx.type !== typeFilter) return false;
+    
+    // Search term
+    if (searchTerm && !tx.description?.toLowerCase().includes(searchTerm.toLowerCase())) return false;
+    
+    // Date range
+    if (dateRange.start || dateRange.end) {
+      const txDate = new Date(tx.created_at);
+      if (dateRange.start && txDate < new Date(dateRange.start)) return false;
+      if (dateRange.end && txDate > new Date(dateRange.end + 'T23:59:59')) return false;
+    }
+    
+    return true;
+  });
+
+  // Filter waste entries
+  const filteredWasteEntries = wasteEntries.filter((entry) => {
+    // Waste type filter
+    if (wasteTypeFilter !== 'all' && entry.waste_type !== wasteTypeFilter) return false;
+    
+    // Search term
+    if (searchTerm && !entry.description?.toLowerCase().includes(searchTerm.toLowerCase())) return false;
+    
+    // Date range
+    if (dateRange.start || dateRange.end) {
+      const entryDate = new Date(entry.created_at);
+      if (dateRange.start && entryDate < new Date(dateRange.start)) return false;
+      if (dateRange.end && entryDate > new Date(dateRange.end + 'T23:59:59')) return false;
+    }
+    
+    return true;
+  });
+
+  const clearFilters = () => {
+    setSearchTerm('');
+    setTypeFilter('all');
+    setWasteTypeFilter('all');
+    setDateRange({ start: '', end: '' });
+  };
+
+  const activeFiltersCount = 
+    (searchTerm ? 1 : 0) + 
+    (typeFilter !== 'all' ? 1 : 0) + 
+    (wasteTypeFilter !== 'all' ? 1 : 0) + 
+    (dateRange.start || dateRange.end ? 1 : 0);
 
   if (loading) {
     return (
@@ -125,16 +180,105 @@ export default function Transactions() {
           </div>
         </div>
 
+        {/* Search and Filter Section */}
+        <div className="bg-white rounded-lg shadow-md p-6 mb-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div className="md:col-span-2">
+              <label className="block text-sm font-medium text-gray-700 mb-2">Search</label>
+              <input
+                type="text"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                placeholder="Search by description..."
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
+              />
+            </div>
+            
+            {activeTab === 'transactions' ? (
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Type</label>
+                <select
+                  value={typeFilter}
+                  onChange={(e) => setTypeFilter(e.target.value)}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
+                >
+                  <option value="all">All Types</option>
+                  <option value="earning">Earning</option>
+                  <option value="reward">Reward</option>
+                  <option value="withdrawal">Withdrawal</option>
+                </select>
+              </div>
+            ) : (
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Waste Type</label>
+                <select
+                  value={wasteTypeFilter}
+                  onChange={(e) => setWasteTypeFilter(e.target.value)}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
+                >
+                  <option value="all">All Types</option>
+                  <option value="plastic">Plastic</option>
+                  <option value="paper">Paper</option>
+                  <option value="metal">Metal</option>
+                  <option value="electronics">Electronics</option>
+                  <option value="glass">Glass</option>
+                  <option value="organic">Organic</option>
+                  <option value="textile">Textile</option>
+                </select>
+              </div>
+            )}
+            
+            <div className="flex items-end">
+              <button
+                onClick={clearFilters}
+                className="w-full px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition"
+              >
+                Clear Filters {activeFiltersCount > 0 && `(${activeFiltersCount})`}
+              </button>
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Start Date</label>
+              <input
+                type="date"
+                value={dateRange.start}
+                onChange={(e) => setDateRange({ ...dateRange, start: e.target.value })}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">End Date</label>
+              <input
+                type="date"
+                value={dateRange.end}
+                onChange={(e) => setDateRange({ ...dateRange, end: e.target.value })}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
+              />
+            </div>
+          </div>
+        </div>
+
         {activeTab === 'transactions' ? (
           <div className="bg-white rounded-lg shadow-md overflow-hidden">
             <div className="px-6 py-4 border-b border-gray-200">
-              <h2 className="text-xl font-semibold text-gray-900">Transaction History</h2>
+              <h2 className="text-xl font-semibold text-gray-900">
+                Transaction History 
+                {filteredTransactions.length !== transactions.length && (
+                  <span className="text-sm text-gray-500 ml-2">
+                    ({filteredTransactions.length} of {transactions.length})
+                  </span>
+                )}
+              </h2>
             </div>
             <div className="divide-y divide-gray-200">
-              {transactions.length === 0 ? (
-                <div className="px-6 py-12 text-center text-gray-500">No transactions yet</div>
+              {filteredTransactions.length === 0 ? (
+                <div className="px-6 py-12 text-center text-gray-500">
+                  {transactions.length === 0 ? 'No transactions yet' : 'No transactions match your filters'}
+                </div>
               ) : (
-                transactions.map((tx) => (
+                filteredTransactions.map((tx) => (
                   <div key={tx.id} className="px-6 py-4 hover:bg-gray-50 transition">
                     <div className="flex justify-between items-start">
                       <div>
@@ -165,52 +309,57 @@ export default function Transactions() {
           </div>
         ) : (
           <div className="space-y-4">
-            {wasteEntries.length === 0 ? (
+            {filteredWasteEntries.length === 0 ? (
               <div className="bg-white rounded-lg shadow-md p-12 text-center text-gray-500">
-                No waste entries yet
+                {wasteEntries.length === 0 ? 'No waste entries yet' : 'No entries match your filters'}
               </div>
             ) : (
-              wasteEntries.map((entry) => (
-                <div key={entry.id} className="bg-white rounded-lg shadow-md p-6">
-                  <div className="flex justify-between items-start mb-4">
-                    <div>
-                      <h3 className="text-lg font-bold text-gray-900 capitalize">{entry.waste_type}</h3>
-                      <p className="text-sm text-gray-600 mt-1">{formatDate(entry.created_at)}</p>
-                    </div>
-                    <div className="flex gap-2">
-                      <button
-                        onClick={() => handleViewDetails(entry.id)}
-                        className="px-3 py-1 text-sm text-blue-600 hover:bg-blue-50 rounded"
-                      >
-                        View Details
-                      </button>
-                      <button
-                        onClick={() => handleDeleteEntry(entry.id)}
-                        className="px-3 py-1 text-sm text-red-600 hover:bg-red-50 rounded"
-                      >
-                        Delete
-                      </button>
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-3 gap-4 text-sm">
-                    <div>
-                      <p className="text-gray-500">Weight</p>
-                      <p className="font-medium">{entry.weight_kg} kg</p>
-                    </div>
-                    <div>
-                      <p className="text-gray-500">Earned</p>
-                      <p className="font-medium text-green-600">₦{entry.amount_earned}</p>
-                    </div>
-                    <div>
-                      <p className="text-gray-500">Points</p>
-                      <p className="font-medium text-purple-600">{entry.points_earned}</p>
-                    </div>
-                  </div>
-                  {entry.description && (
-                    <p className="text-sm text-gray-600 mt-4 border-t pt-4">{entry.description}</p>
-                  )}
+              <>
+                <div className="text-sm text-gray-600 mb-2">
+                  Showing {filteredWasteEntries.length} of {wasteEntries.length} entries
                 </div>
-              ))
+                {filteredWasteEntries.map((entry) => (
+                  <div key={entry.id} className="bg-white rounded-lg shadow-md p-6">
+                    <div className="flex justify-between items-start mb-4">
+                      <div>
+                        <h3 className="text-lg font-bold text-gray-900 capitalize">{entry.waste_type}</h3>
+                        <p className="text-sm text-gray-600 mt-1">{formatDate(entry.created_at)}</p>
+                      </div>
+                      <div className="flex gap-2">
+                        <button
+                          onClick={() => handleViewDetails(entry.id)}
+                          className="px-3 py-1 text-sm text-blue-600 hover:bg-blue-50 rounded"
+                        >
+                          View Details
+                        </button>
+                        <button
+                          onClick={() => handleDeleteEntry(entry.id)}
+                          className="px-3 py-1 text-sm text-red-600 hover:bg-red-50 rounded"
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-3 gap-4 text-sm">
+                      <div>
+                        <p className="text-gray-500">Weight</p>
+                        <p className="font-medium">{entry.weight_kg} kg</p>
+                      </div>
+                      <div>
+                        <p className="text-gray-500">Earned</p>
+                        <p className="font-medium text-green-600">₦{entry.amount_earned}</p>
+                      </div>
+                      <div>
+                        <p className="text-gray-500">Points</p>
+                        <p className="font-medium text-purple-600">{entry.points_earned}</p>
+                      </div>
+                    </div>
+                    {entry.description && (
+                      <p className="text-sm text-gray-600 mt-4 border-t pt-4">{entry.description}</p>
+                    )}
+                  </div>
+                ))}
+              </>
             )}
           </div>
         )}

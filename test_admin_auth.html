@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Auth Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .success { background-color: #d4edda; border-color: #c3e6cb; }
+        .error { background-color: #f8d7da; border-color: #f5c6cb; }
+        .info { background-color: #d1ecf1; border-color: #bee5eb; }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        button:hover { background-color: #0056b3; }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Admin Authentication Test</h1>
+    
+    <div class="test-section info">
+        <h2>Step 1: Login</h2>
+        <input type="text" id="username" placeholder="Username" value="testuser">
+        <input type="password" id="password" placeholder="Password" value="test123">
+        <button onclick="login()">Login</button>
+        <div id="loginResult"></div>
+    </div>
+
+    <div class="test-section info">
+        <h2>Step 2: Check Token</h2>
+        <button onclick="checkToken()">Check Token in LocalStorage</button>
+        <div id="tokenResult"></div>
+    </div>
+
+    <div class="test-section info">
+        <h2>Step 3: Test Admin Endpoints</h2>
+        <button onclick="testAnalytics()">Test Analytics Endpoint</button>
+        <button onclick="testSettings()">Test Settings Endpoint</button>
+        <button onclick="testUsers()">Test Users Endpoint</button>
+        <div id="endpointResult"></div>
+    </div>
+
+    <div class="test-section info">
+        <h2>Step 4: Check User Role</h2>
+        <button onclick="checkUserRole()">Check if User is Admin</button>
+        <div id="roleResult"></div>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:8000';
+
+        async function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const resultDiv = document.getElementById('loginResult');
+
+            try {
+                const formData = new FormData();
+                formData.append('username', username);
+                formData.append('password', password);
+
+                const response = await fetch(`${API_URL}/api/auth/login`, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    localStorage.setItem('access_token', data.access_token);
+                    resultDiv.innerHTML = '<div class="success"><strong>✅ Login Successful!</strong><br>Token stored in localStorage</div>';
+                } else {
+                    const error = await response.text();
+                    resultDiv.innerHTML = `<div class="error"><strong>❌ Login Failed</strong><br>${error}</div>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="error"><strong>❌ Error:</strong> ${error.message}</div>`;
+            }
+        }
+
+        function checkToken() {
+            const resultDiv = document.getElementById('tokenResult');
+            const token = localStorage.getItem('access_token');
+            
+            if (token) {
+                resultDiv.innerHTML = `<div class="success"><strong>✅ Token Found</strong><br><pre>${token.substring(0, 50)}...</pre></div>`;
+            } else {
+                resultDiv.innerHTML = '<div class="error"><strong>❌ No Token Found</strong><br>Please login first</div>';
+            }
+        }
+
+        async function testAnalytics() {
+            const resultDiv = document.getElementById('endpointResult');
+            const token = localStorage.getItem('access_token');
+
+            if (!token) {
+                resultDiv.innerHTML = '<div class="error"><strong>❌ No Token</strong><br>Please login first</div>';
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_URL}/api/admin/analytics/overview`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    resultDiv.innerHTML = `<div class="success"><strong>✅ Analytics Endpoint Working!</strong><br><pre>${JSON.stringify(data, null, 2)}</pre></div>`;
+                } else {
+                    const error = await response.text();
+                    resultDiv.innerHTML = `<div class="error"><strong>❌ Analytics Failed (${response.status})</strong><br>${error}</div>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="error"><strong>❌ Error:</strong> ${error.message}</div>`;
+            }
+        }
+
+        async function testSettings() {
+            const resultDiv = document.getElementById('endpointResult');
+            const token = localStorage.getItem('access_token');
+
+            if (!token) {
+                resultDiv.innerHTML = '<div class="error"><strong>❌ No Token</strong><br>Please login first</div>';
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_URL}/api/admin/settings`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    resultDiv.innerHTML = `<div class="success"><strong>✅ Settings Endpoint Working!</strong><br><pre>${JSON.stringify(data, null, 2)}</pre></div>`;
+                } else {
+                    const error = await response.text();
+                    resultDiv.innerHTML = `<div class="error"><strong>❌ Settings Failed (${response.status})</strong><br>${error}</div>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="error"><strong>❌ Error:</strong> ${error.message}</div>`;
+            }
+        }
+
+        async function testUsers() {
+            const resultDiv = document.getElementById('endpointResult');
+            const token = localStorage.getItem('access_token');
+
+            if (!token) {
+                resultDiv.innerHTML = '<div class="error"><strong>❌ No Token</strong><br>Please login first</div>';
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_URL}/api/admin/users`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    resultDiv.innerHTML = `<div class="success"><strong>✅ Users Endpoint Working!</strong><br>Found ${data.length} users</div>`;
+                } else {
+                    const error = await response.text();
+                    resultDiv.innerHTML = `<div class="error"><strong>❌ Users Failed (${response.status})</strong><br>${error}</div>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="error"><strong>❌ Error:</strong> ${error.message}</div>`;
+            }
+        }
+
+        async function checkUserRole() {
+            const resultDiv = document.getElementById('roleResult');
+            const token = localStorage.getItem('access_token');
+
+            if (!token) {
+                resultDiv.innerHTML = '<div class="error"><strong>❌ No Token</strong><br>Please login first</div>';
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_URL}/api/auth/me`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    const isAdmin = data.role === 'admin';
+                    if (isAdmin) {
+                        resultDiv.innerHTML = `<div class="success"><strong>✅ User is Admin</strong><br>Username: ${data.username}<br>Role: ${data.role}</div>`;
+                    } else {
+                        resultDiv.innerHTML = `<div class="error"><strong>❌ User is NOT Admin</strong><br>Username: ${data.username}<br>Role: ${data.role}</div>`;
+                    }
+                } else {
+                    const error = await response.text();
+                    resultDiv.innerHTML = `<div class="error"><strong>❌ Failed (${response.status})</strong><br>${error}</div>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="error"><strong>❌ Error:</strong> ${error.message}</div>`;
+            }
+        }
+    </script>
+</body>
+</html>

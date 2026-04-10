@@ -66,6 +66,15 @@ export const authService = {
     return response.data;
   },
 
+  async isAdmin(): Promise<boolean> {
+    try {
+      const response = await api.get('/api/auth/me/is-admin');
+      return response.data.is_admin;
+    } catch (error) {
+      return false;
+    }
+  },
+
   async updateProfile(data: Partial<UserCreate>): Promise<UserResponse> {
     const response = await api.put('/api/auth/me', data);
     return response.data;
