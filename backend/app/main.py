@@ -38,6 +38,7 @@ app = FastAPI(
 allowed_origins = [
     "http://localhost:3000",
     "http://localhost:3001",
+    "https://trashverse.netlify.app",  # Production frontend
 ]
 
 # Add production origins from environment variable
