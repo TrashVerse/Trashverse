@@ -37,23 +37,26 @@ app = FastAPI(
 # CORS middleware - configure for production
 allowed_origins = [
     "http://localhost:3000",
-    "http://localhost:3001", 
-    "https://trashverse.vercel.app",
-    "https://trashverse-web.vercel.app",
-    "https://www.trashverse.com",
-    "https://trashverse.com",
+    "http://localhost:3001",
 ]
 
-# Add environment-specific origins
+# Add production origins from environment variable
 if os.getenv("FRONTEND_URL"):
     allowed_origins.append(os.getenv("FRONTEND_URL"))
 
+# Add common production domains (update these with your actual domains)
+production_origins = os.getenv("ALLOWED_ORIGINS", "").split(",")
+for origin in production_origins:
+    if origin.strip():
+        allowed_origins.append(origin.strip())
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=allowed_origins,
+    allow_origins=allowed_origins if os.getenv("ENVIRONMENT") == "production" else ["*"],
     allow_credentials=True,
-    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allow_methods=["*"],
     allow_headers=["*"],
+    expose_headers=["*"],
 )
 
 # Create upload directories
