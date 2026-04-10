@@ -35,9 +35,11 @@ app = FastAPI(
 )
 
 # CORS middleware - configure for production
+# Always use explicit origins list (cannot use ["*"] with credentials)
 allowed_origins = [
     "http://localhost:3000",
     "http://localhost:3001",
+    "http://localhost:5173",  # Vite dev server
     "https://trashverse.netlify.app",  # Production frontend
 ]
 
@@ -53,7 +55,7 @@ for origin in production_origins:
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=allowed_origins if os.getenv("ENVIRONMENT") == "production" else ["*"],
+    allow_origins=allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
