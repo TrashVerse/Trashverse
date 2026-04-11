@@ -42,6 +42,7 @@ allowed_origins = [
     "http://localhost:3002",  # Vite dev server (alternate port)
     "http://localhost:5173",  # Vite dev server (default port)
     "https://trashverse.netlify.app",  # Production frontend
+    "https://agent-69d997d43ee14df7538df837--trashverse.netlify.app",  # Netlify preview
 ]
 
 # Add production origins from environment variable
@@ -90,7 +91,7 @@ app.include_router(admin.router)
 def root():
     return {
         "message": "Welcome to TrashVerse API",
-        "version": "1.0.1",  # Incremented to verify deployment
+        "version": "1.0.2",  # Incremented to verify deployment
         "status": "operational",
         "docs": "/docs" if os.getenv("ENVIRONMENT") != "production" else "disabled",
         "cors_origins": len(allowed_origins),  # Number of allowed origins
@@ -100,7 +101,7 @@ def root():
 def health_check():
     return {
         "status": "healthy",
-        "version": "1.0.1",  # Incremented to verify deployment
+        "version": "1.0.2",  # Incremented to verify deployment
         "environment": os.getenv("ENVIRONMENT", "development"),
         "cors_configured": True,
         "allowed_origins_count": len(allowed_origins),
