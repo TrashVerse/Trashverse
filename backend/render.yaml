@@ -34,7 +34,7 @@ services:
       - key: PASSWORD_RESET_TOKEN_EXPIRE_MINUTES
         value: 30
       - key: ALLOWED_ORIGINS
-        value: https://trashverse.netlify.app
+        value: https://trashverse.netlify.app,http://localhost:3002
 
 databases:
   - name: trashverse-db
