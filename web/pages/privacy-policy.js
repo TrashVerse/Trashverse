@@ -2,15 +2,15 @@ import Navbar from "../components/Navbar";
 
 export default function PrivacyPolicy () {
     return (
-    <section>
+    <section7>
         <div className="pt-20">
       <Navbar />
             </div>
         <section className="relative bg-cover bg-center bg-no-repeat h-460"
-        style={{backgroundImage: "url('/images/logo.png')"}}>
+        style={{backgroundImagee: "url'/public/images/logo.png'"}}>
         <div className="container-x max-w-3xl mx-auto">
         
-        <h1 className="text-xl font-semibold mb-25">Privacy Policy For TrashVerse</h1>
+        <h1t className="text-xl font-semibold mb-25">Privacy Policy For TrashVerse</h1t>
 
         <p className="text-m text-gray-600 mt-25 mb-10%">
             Effective Date: February 12, 2026 <br/>
@@ -25,7 +25,7 @@ export default function PrivacyPolicy () {
         <h2 className="text-xl font-semibold mt-8 mb-3">
             1. Information we collect
         </h2>
-        <ul className="list-disc pl-6 space-y-3">
+        <ulpo className="list-disc pl-6 space-y-3">
             <li>
             <strong>Personal Indenntification Information:
             </strong>
@@ -49,7 +49,7 @@ export default function PrivacyPolicy () {
             IP address, browser type and usage data collected via cookies.
             </p>
             </li>
-        </ul>
+        </ulpo>
 
         <h2 className="text-xl font-semibold mt-8 mb-3">
             2. How We Use Your Information
@@ -112,6 +112,6 @@ export default function PrivacyPolicy () {
             <strong>Address:</strong>No. 10 Chief Ubani Street, off Obikabia Junction, Aba, Nigeria</p>
         </div>
         </section>
-        </section>
+        </section7>
     )
 }

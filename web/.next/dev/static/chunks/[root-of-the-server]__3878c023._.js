@@ -462,186 +462,84 @@ function triggerUpdate(msg) {
     }
 }
 }),
-"[project]/Desktop/Upload/Trashverse/web/pages/dashboard/history.js [client] (ecmascript)", ((__turbopack_context__) => {
-"use strict";
+"[project]/Desktop/Upload/Trashverse/web/pages/dashboard/history.js [client] (ecmascript)", ((__turbopack_context__, module, exports) => {
 
-__turbopack_context__.s([
-    "default",
-    ()=>History
-]);
-var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Upload$2f$Trashverse$2f$web$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Upload/Trashverse/web/node_modules/react/jsx-dev-runtime.js [client] (ecmascript)");
-(()=>{
-    const e = new Error("Cannot find module '../components/DashboardLayout'");
-    e.code = 'MODULE_NOT_FOUND';
-    throw e;
-})();
-;
-;
-function History() {
-    const history = [
-        {
-            date: "Mar 10",
-            type: "Plastic",
-            kg: 5,
-            amount: 2500,
-            status: "Completed"
-        },
-        {
-            date: "Mar 12",
-            type: "Metal",
-            kg: 2,
-            amount: 600,
-            status: "Pending"
-        }
-    ];
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Upload$2f$Trashverse$2f$web$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(DashboardLayout, {
-        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Upload$2f$Trashverse$2f$web$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-            className: "bg-white p-6 rounded-2xl shadow",
-            children: [
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Upload$2f$Trashverse$2f$web$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                    className: "text-xl font-bold mb-4",
-                    children: "Pickup History"
-                }, void 0, false, {
-                    fileName: "[project]/Desktop/Upload/Trashverse/web/pages/dashboard/history.js",
-                    lineNumber: 24,
-                    columnNumber: 9
-                }, this),
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Upload$2f$Trashverse$2f$web$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
-                    className: "w-full text-left",
-                    children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Upload$2f$Trashverse$2f$web$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("thead", {
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Upload$2f$Trashverse$2f$web$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
-                                className: "text-gray-500 text-sm border-b",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Upload$2f$Trashverse$2f$web$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                        className: "py-2",
-                                        children: "Date"
-                                    }, void 0, false, {
-                                        fileName: "[project]/Desktop/Upload/Trashverse/web/pages/dashboard/history.js",
-                                        lineNumber: 29,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Upload$2f$Trashverse$2f$web$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                        children: "Type"
-                                    }, void 0, false, {
-                                        fileName: "[project]/Desktop/Upload/Trashverse/web/pages/dashboard/history.js",
-                                        lineNumber: 30,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Upload$2f$Trashverse$2f$web$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                        children: "Kg"
-                                    }, void 0, false, {
-                                        fileName: "[project]/Desktop/Upload/Trashverse/web/pages/dashboard/history.js",
-                                        lineNumber: 31,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Upload$2f$Trashverse$2f$web$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                        children: "Amount"
-                                    }, void 0, false, {
-                                        fileName: "[project]/Desktop/Upload/Trashverse/web/pages/dashboard/history.js",
-                                        lineNumber: 32,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Upload$2f$Trashverse$2f$web$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                        children: "Status"
-                                    }, void 0, false, {
-                                        fileName: "[project]/Desktop/Upload/Trashverse/web/pages/dashboard/history.js",
-                                        lineNumber: 33,
-                                        columnNumber: 15
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/Desktop/Upload/Trashverse/web/pages/dashboard/history.js",
-                                lineNumber: 28,
-                                columnNumber: 13
-                            }, this)
-                        }, void 0, false, {
-                            fileName: "[project]/Desktop/Upload/Trashverse/web/pages/dashboard/history.js",
-                            lineNumber: 27,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Upload$2f$Trashverse$2f$web$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
-                            children: history.map((item, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Upload$2f$Trashverse$2f$web$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
-                                    className: "border-b",
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Upload$2f$Trashverse$2f$web$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                            className: "py-2",
-                                            children: item.date
-                                        }, void 0, false, {
-                                            fileName: "[project]/Desktop/Upload/Trashverse/web/pages/dashboard/history.js",
-                                            lineNumber: 40,
-                                            columnNumber: 17
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Upload$2f$Trashverse$2f$web$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                            children: item.type
-                                        }, void 0, false, {
-                                            fileName: "[project]/Desktop/Upload/Trashverse/web/pages/dashboard/history.js",
-                                            lineNumber: 41,
-                                            columnNumber: 17
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Upload$2f$Trashverse$2f$web$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                            children: item.kg
-                                        }, void 0, false, {
-                                            fileName: "[project]/Desktop/Upload/Trashverse/web/pages/dashboard/history.js",
-                                            lineNumber: 42,
-                                            columnNumber: 17
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Upload$2f$Trashverse$2f$web$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                            children: [
-                                                "₦",
-                                                item.amount
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/Desktop/Upload/Trashverse/web/pages/dashboard/history.js",
-                                            lineNumber: 43,
-                                            columnNumber: 17
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Upload$2f$Trashverse$2f$web$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Upload$2f$Trashverse$2f$web$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: item.status === "Completed" ? "text-green-600" : "text-yellow-500",
-                                                children: item.status
-                                            }, void 0, false, {
-                                                fileName: "[project]/Desktop/Upload/Trashverse/web/pages/dashboard/history.js",
-                                                lineNumber: 45,
-                                                columnNumber: 19
-                                            }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/Desktop/Upload/Trashverse/web/pages/dashboard/history.js",
-                                            lineNumber: 44,
-                                            columnNumber: 17
-                                        }, this)
-                                    ]
-                                }, i, true, {
-                                    fileName: "[project]/Desktop/Upload/Trashverse/web/pages/dashboard/history.js",
-                                    lineNumber: 39,
-                                    columnNumber: 15
-                                }, this))
-                        }, void 0, false, {
-                            fileName: "[project]/Desktop/Upload/Trashverse/web/pages/dashboard/history.js",
-                            lineNumber: 37,
-                            columnNumber: 11
-                        }, this)
-                    ]
-                }, void 0, true, {
-                    fileName: "[project]/Desktop/Upload/Trashverse/web/pages/dashboard/history.js",
-                    lineNumber: 26,
-                    columnNumber: 9
-                }, this)
-            ]
-        }, void 0, true, {
-            fileName: "[project]/Desktop/Upload/Trashverse/web/pages/dashboard/history.js",
-            lineNumber: 23,
-            columnNumber: 7
-        }, this)
-    }, void 0, false, {
-        fileName: "[project]/Desktop/Upload/Trashverse/web/pages/dashboard/history.js",
-        lineNumber: 22,
-        columnNumber: 5
-    }, this);
-}
-_c = History;
-var _c;
-__turbopack_context__.k.register(_c, "History");
+// import { useEffect, useState } from "react";
+// import DashboardLayout from "../../components/DashboardLayout";
+// import { BASE_URL } from "../../utils/api"; // Make sure utils/api.js exists
+// export default function History() {
+//   const [history, setHistory] = useState([]);
+//   const [loading, setLoading] = useState(true);
+//   const [error, setError] = useState(null);
+//   useEffect(() => {
+//     async function fetchHistory() {
+//       try {
+//         const res = await fetch(`${BASE_URL}/api/history`, {
+//           method: "GET",
+//           headers: {
+//             "Content-Type": "application/json",
+//             // add auth token here if required by backend
+//             // "Authorization": `Bearer ${token}`,
+//           },
+//         });
+//         if (!res.ok) {
+//           throw new Error("Failed to fetch history");
+//         }
+//         const data = await res.json();
+//         setHistory(data); // assumes backend returns array of history objects
+//       } catch (err) {
+//         console.error(err);
+//         setError(err.message);
+//       } finally {
+//         setLoading(false);
+//       }
+//     }
+//     fetchHistory();
+//   }, []);
+//   return (
+//     <DashboardLayout>
+//       <div className="bg-white p-6 rounded-2xl shadow">
+//         <h2 className="text-xl font-bold mb-4">Pickup History</h2>
+//         {loading && <p>Loading...</p>}
+//         {error && <p className="text-red-500">Error: {error}</p>}
+//         {!loading && !error && (
+//           <table className="w-full text-left">
+//             <thead>
+//               <tr className="text-gray-500 text-sm border-b">
+//                 <th className="py-2">Date</th>
+//                 <th>Type</th>
+//                 <th>Kg</th>
+//                 <th>Amount</th>
+//                 <th>Status</th>
+//               </tr>
+//             </thead>
+//             <tbody>
+//               {history.map((item, i) => (
+//                 <tr key={i} className="border-b">
+//                   <td className="py-2">{item.date}</td>
+//                   <td>{item.type}</td>
+//                   <td>{item.kg}</td>
+//                   <td>₦{item.amount}</td>
+//                   <td>
+//                     <span
+//                       className={
+//                         item.status === "Completed"
+//                           ? "text-green-600"
+//                           : "text-yellow-500"
+//                       }
+//                     >
+//                       {item.status}
+//                     </span>
+//                   </td>
+//                 </tr>
+//               ))}
+//             </tbody>
+//           </table>
+//         )}
+//       </div>
+//     </DashboardLayout>
+//   );
+// }
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }

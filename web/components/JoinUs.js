@@ -19,8 +19,8 @@ export default function JoinTeam() {
       {/* Right-aligned highlight section */}
       <div>
         <div className="max-w h-23 max-auto bg-green-100 border border-green-200 rounded-lg p-8 mb-8 md:p-10 lg:p-12">
-          <h4t className="text-2xl font-semibold text-green-800 mb-3 ml-2.5 mt-2">
-            We are hiring Field Supervisors!
+          <h4t className="text-lg font-semibold text-green-800 mb-3 ml-2.5 mt-2">
+            We are hiring Recycling Agent!
           </h4t> 
 
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -30,7 +30,7 @@ export default function JoinTeam() {
           </p>
           </joindiv>
           <openbutton className="bg-green-700 text-white px-6 py-2 rounded-md hover:bg-green-800 transition-colors font-medium whitespace-nowrap shrink-0 shadow-sm w-full sm:w-auto">
-            <Link href="/careers">
+            <Link href="/blog">
             View Openings
             </Link>
             

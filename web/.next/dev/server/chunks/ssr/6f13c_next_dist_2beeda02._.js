@@ -5806,6 +5806,8 @@ const getHandler = ({ srcPage: originalSrcPage, config, userland, routeModule, i
 "[project]/Desktop/Upload/Trashverse/web/node_modules/next/dist/esm/build/templates/pages.js { INNER_PAGE => \"[project]/Desktop/Upload/Trashverse/web/pages/dashboard/history.js [ssr] (ecmascript)\", INNER_DOCUMENT => \"[project]/Desktop/Upload/Trashverse/web/node_modules/next/document.js [ssr] (ecmascript)\", INNER_APP => \"[project]/Desktop/Upload/Trashverse/web/pages/_app.js [ssr] (ecmascript)\" } [ssr] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
+return __turbopack_context__.a(async (__turbopack_handle_async_dependencies__, __turbopack_async_result__) => { try {
+
 __turbopack_context__.s([
     "config",
     ()=>config,
@@ -5843,6 +5845,10 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Upload$2f$Trashve
 // Import the userland code.
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Upload$2f$Trashverse$2f$web$2f$pages$2f$dashboard$2f$history$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Upload/Trashverse/web/pages/dashboard/history.js [ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Upload$2f$Trashverse$2f$web$2f$node_modules$2f$next$2f$dist$2f$esm$2f$server$2f$route$2d$modules$2f$pages$2f$pages$2d$handler$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Upload/Trashverse/web/node_modules/next/dist/esm/server/route-modules/pages/pages-handler.js [ssr] (ecmascript)");
+var __turbopack_async_dependencies__ = __turbopack_handle_async_dependencies__([
+    __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Upload$2f$Trashverse$2f$web$2f$pages$2f$_app$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__
+]);
+[__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Upload$2f$Trashverse$2f$web$2f$pages$2f$_app$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__] = __turbopack_async_dependencies__.then ? (await __turbopack_async_dependencies__)() : __turbopack_async_dependencies__;
 ;
 ;
 ;
@@ -5888,7 +5894,8 @@ const handler = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$U
     getStaticProps,
     getServerSideProps
 }); //# sourceMappingURL=pages.js.map
-}),
+__turbopack_async_result__();
+} catch(e) { __turbopack_async_result__(e); } }, false);}),
 ];
 
 //# sourceMappingURL=6f13c_next_dist_2beeda02._.js.map
