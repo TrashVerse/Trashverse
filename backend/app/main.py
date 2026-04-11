@@ -39,7 +39,8 @@ app = FastAPI(
 allowed_origins = [
     "http://localhost:3000",
     "http://localhost:3001",
-    "http://localhost:5173",  # Vite dev server
+    "http://localhost:3002",  # Vite dev server (alternate port)
+    "http://localhost:5173",  # Vite dev server (default port)
     "https://trashverse.netlify.app",  # Production frontend
 ]
 
