@@ -1,7 +1,9 @@
 import axios from 'axios';
 
 // Configure base URL
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+// In production (Netlify), use Render backend; in development, use localhost
+const API_BASE_URL = import.meta.env.VITE_API_URL || 
+  (import.meta.env.PROD ? 'https://trashverse.onrender.com' : 'http://localhost:8000');
 
 // Create axios instance
 const api = axios.create({
