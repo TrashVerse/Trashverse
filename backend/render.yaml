@@ -5,6 +5,7 @@ services:
     region: oregon
     plan: free
     branch: main
+    rootDir: backend
     buildCommand: pip install -r requirements.txt
     startCommand: gunicorn app.main:app --workers 2 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:$PORT
     envVars:
@@ -32,6 +33,8 @@ services:
         value: 10080
       - key: PASSWORD_RESET_TOKEN_EXPIRE_MINUTES
         value: 30
+      - key: ALLOWED_ORIGINS
+        value: https://trashverse.netlify.app
 
 databases:
   - name: trashverse-db

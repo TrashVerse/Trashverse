@@ -53,6 +53,10 @@ for origin in production_origins:
     if origin.strip():
         allowed_origins.append(origin.strip())
 
+# Log CORS configuration for debugging
+logging.info(f"CORS allowed origins: {allowed_origins}")
+logging.info(f"Environment: {os.getenv('ENVIRONMENT', 'development')}")
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=allowed_origins,
@@ -85,15 +89,18 @@ app.include_router(admin.router)
 def root():
     return {
         "message": "Welcome to TrashVerse API",
-        "version": "1.0.0",
+        "version": "1.0.1",  # Incremented to verify deployment
         "status": "operational",
-        "docs": "/docs" if os.getenv("ENVIRONMENT") != "production" else "disabled"
+        "docs": "/docs" if os.getenv("ENVIRONMENT") != "production" else "disabled",
+        "cors_origins": len(allowed_origins),  # Number of allowed origins
     }
 
 @app.get("/health")
 def health_check():
     return {
         "status": "healthy",
-        "version": "1.0.0",
-        "environment": os.getenv("ENVIRONMENT", "development")
+        "version": "1.0.1",  # Incremented to verify deployment
+        "environment": os.getenv("ENVIRONMENT", "development"),
+        "cors_configured": True,
+        "allowed_origins_count": len(allowed_origins),
     }
