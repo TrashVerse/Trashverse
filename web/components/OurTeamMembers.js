@@ -8,7 +8,7 @@ const sampleTeamMembers = [
     photoUrl: "/images/charles.jpg"
   },
   {
-    name: "Akobundu Wisdom",
+    name: "Akobundu Wisdom m",
     role: "Technical Chief",
     photoUrl: "/images/wisdom.png",
   },
