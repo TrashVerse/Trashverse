@@ -8,8 +8,8 @@ export default function Navbar() {
     <nav className="fixed top-0 w-full z-50 bg-white shadow-lg border-b-4 border-green-500">
       <div className="container-x flex items-center justify-between py-6 md:py-8">
         <div className="flex items-center gap-3 text-2xl md:text-3xl font-bold text-green-600">
-          <img src="/images/logo.png" width={60} height={60} alt="TrashVerse Logo" className="w-16 h-16 md:w-20 md:h-20" />
-          <span>TrashVerse</span>
+          <img src="/images/logo.png" width={60} height={60} alt="Trashverse Logo" className="w-16 h-16 md:w-20 md:h-20" />
+          <span>Trashverse</span>
         </div>
 
         <ul className="hidden md:flex gap-10 text-gray-700 text-lg font-semibold">
@@ -35,7 +35,7 @@ export default function Navbar() {
           </li>
           <li>
             <Link to="/blog" className="hover:text-green-600 transition-colors py-2 px-2">
-              Blog
+              Trash Coach
             </Link>
           </li>
         </ul>
@@ -101,7 +101,7 @@ export default function Navbar() {
                 onClick={() => setOpen(false)}
                 className="block py-3 px-4 hover:bg-gray-50 rounded-lg transition-colors"
               >
-                Blog
+                Trash Coach
               </Link>
             </li>
             <li className="pt-2">

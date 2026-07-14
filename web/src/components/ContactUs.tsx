@@ -10,8 +10,8 @@ export default function ContactUs() {
         <div className="grid md:grid-cols-3 gap-10 ">
           <div className="space-y-4">
             <div className="flex items-center text-2xl font-bold text-green-600">
-              <img src="/images/logo.png" width={40} height={40} alt="TrashVerse Logo" />
-              TrashVerse
+              <img src="/images/logo.png" width={40} height={40} alt="Trashverse Logo" />
+              Trashverse
             </div>
             <p className="text-gray-600 text-sm leading-relaxed">
               Transforming waste management into a profitable and sustainable experience for
@@ -56,8 +56,26 @@ export default function ContactUs() {
           </div>
         </div>
 
+        <div className="mt-10 border-t border-gray-300/70 pt-6">
+          <h4 className="font-semibold text-gray-900 mb-4 text-sm tracking-wide">OUR PARTNERS</h4>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="flex items-center gap-3 rounded-full border border-gray-200 bg-white/80 px-3 py-2 text-sm text-gray-700">
+              <img src="/images/science.jpeg" alt="Abia State Ministry of Science and Technology" className="h-8 w-8 rounded-full object-cover" />
+              <span>Abia State Ministry of Science and Technology</span>
+            </div>
+            <div className="flex items-center gap-3 rounded-full border border-gray-200 bg-white/80 px-3 py-2 text-sm text-gray-700">
+              <img src="/images/starich.png" alt="Starich Recycling Technology Co. LTD" className="h-8 w-8 rounded-full object-cover" />
+              <span>Starich Recycling Technology Co. LTD</span>
+            </div>
+            <div className="flex items-center gap-3 rounded-full border border-gray-200 bg-white/80 px-3 py-2 text-sm text-gray-700">
+              <img src="/images/ighub.png" alt="Innovation Growth Hub (iGHUB)" className="h-8 w-8 rounded-full object-cover" />
+              <span>Innovation Growth Hub (iGHUB)</span>
+            </div>
+          </div>
+        </div>
+
         <div className=" mt-12 pt-6 text-center text-gray-500 text-sm">
-          © 2026 TrashVerse Inc. All rights reserved.
+          © 2026 Trashverse Inc. All rights reserved.
         </div>
       </div>
     </section>

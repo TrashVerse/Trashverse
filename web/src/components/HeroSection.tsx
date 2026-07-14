@@ -16,7 +16,7 @@ export default function HeroSection() {
             </h1>
 
             <p className="mt-6 text-gray-700 max-w-xl mx-auto lg:mx-0 text-base sm:text-lg">
-              TrashVerse is revolutionizing recycling through smart technology. We bridge the gap
+              Trashverse is revolutionizing recycling through smart technology. We bridge the gap
               between waste management and financial inclusion for a sustainable ecosystem.
             </p>
 

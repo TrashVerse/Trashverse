@@ -71,15 +71,15 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
         <div className="flex items-center justify-between px-4 py-6 border-b border-green-600">
           {!sidebarCollapsed && (
             <div className="flex items-center space-x-2">
-              <img src="/images/logo.png" alt="TrashVerse" className="w-10 h-10" />
+              <img src="/images/logo.png" alt="Trashverse" className="w-10 h-10" />
               <div>
-                <h1 className="text-xl font-bold">TrashVerse</h1>
+                <h1 className="text-xl font-bold">Trashverse</h1>
                 <p className="text-xs text-green-200">Admin Panel</p>
               </div>
             </div>
           )}
           {sidebarCollapsed && (
-            <img src="/images/logo.png" alt="TrashVerse" className="w-10 h-10 mx-auto" />
+            <img src="/images/logo.png" alt="Trashverse" className="w-10 h-10 mx-auto" />
           )}
           
           {/* Mobile close button */}
@@ -144,9 +144,9 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
         {/* Mobile Header */}
         <header className="lg:hidden bg-white shadow-sm border-b px-4 py-3 flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <img src="/images/logo.png" alt="TrashVerse" className="w-8 h-8" />
+            <img src="/images/logo.png" alt="Trashverse" className="w-8 h-8" />
             <div>
-              <h1 className="text-lg font-bold text-green-600">TrashVerse</h1>
+              <h1 className="text-lg font-bold text-green-600">Trashverse</h1>
               <p className="text-xs text-gray-600">Admin Panel</p>
             </div>
           </div>

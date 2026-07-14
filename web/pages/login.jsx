@@ -49,7 +49,7 @@ export default function Login() {
 
       {/* LEFT SIDE (Branding) */}
       <div className="hidden md:flex w-1/2 bg-gradient-to-br from-green-600 to-green-900 text-white flex-col justify-center items-center p-10">
-        <h1 className="text-4xl font-bold mb-4">TrashVerse</h1>
+        <h1 className="text-4xl font-bold mb-4">Trashverse</h1>
         <p className="text-lg opacity-80 text-center max-w-sm">
           Smart waste management for a cleaner, greener future 🌱
         </p>

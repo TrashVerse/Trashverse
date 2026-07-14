@@ -23,7 +23,7 @@ export default function WhyUs() {
 
           <div className="pt-4">
             <div className="pt-6 mt-[10%] mb-[6%]">
-              <h3 className="text-lg font-bold">Why TrashVerse?</h3>
+              <h3 className="text-lg font-bold">Why Trashverse?</h3>
             </div>
             <ul>
               <li className="flex items-center gap-3">

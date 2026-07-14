@@ -94,12 +94,12 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         <div className="flex items-center justify-between px-4 py-6 border-b">
           {!sidebarCollapsed && (
             <div className="flex items-center space-x-2">
-              <img src="/images/logo.png" alt="TrashVerse" className="w-10 h-10" />
-              <h1 className="text-xl font-bold text-green-600">TrashVerse</h1>
+              <img src="/images/logo.png" alt="Trashverse" className="w-10 h-10" />
+              <h1 className="text-xl font-bold text-green-600">Trashverse</h1>
             </div>
           )}
           {sidebarCollapsed && (
-            <img src="/images/logo.png" alt="TrashVerse" className="w-10 h-10 mx-auto" />
+            <img src="/images/logo.png" alt="Trashverse" className="w-10 h-10 mx-auto" />
           )}
           
           {/* Mobile close button */}
@@ -164,8 +164,8 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         {/* Mobile Header */}
         <header className="lg:hidden bg-white shadow-sm border-b px-4 py-3 flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <img src="/images/logo.png" alt="TrashVerse" className="w-8 h-8" />
-            <h1 className="text-lg font-bold text-green-600">TrashVerse</h1>
+            <img src="/images/logo.png" alt="Trashverse" className="w-8 h-8" />
+            <h1 className="text-lg font-bold text-green-600">Trashverse</h1>
           </div>
           <button
             onClick={() => setMobileMenuOpen(true)}

@@ -14,11 +14,11 @@ export default function HeroSection() {
             <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold leading-tight text-gray-900">
               Turning Today’s <span className="text-green-600">Waste</span> into{" "}
               <span className="hidden lg:inline"><br /></span>
-              Tomorrow’s Wealth.
+              Tomorrow’s <span className="text-green-600">Wealth</span>.
             </h1>
 
             <p className="mt-6 text-gray-700 max-w-xl mx-auto lg:mx-0 text-base sm:text-lg">
-              TrashVerse is revolutionizing recycling through smart technology.
+              Trashverse is revolutionizing recycling through smart technology.
               We bridge the gap between waste management and financial inclusion
               for a sustainable ecosystem.
             </p>
@@ -31,7 +31,7 @@ export default function HeroSection() {
               </secbutton>
 
               <mobutton className="border-2 border-green-600 text-green-600 px-8 py-3 rounded-full font-bold hover:bg-green-50 transition shadow-md">
-                <Link href="blog">
+                <Link href="/blog">
                 Learn More
                 </Link>
               </mobutton>
@@ -42,7 +42,7 @@ export default function HeroSection() {
           <div className="w-full lg:w-1/2 flex justify-center relative">
             <div className="relative w-full max">
               <Image
-                src="/images/trash.jpg"
+                src="/images/new.jpeg"
                 width={500}
                 height={350}
                 alt="Recycling Bins"

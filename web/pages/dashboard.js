@@ -37,7 +37,7 @@ export default function TrashverseDashboard() {
       {/* Header */}
       <header className="bg-emerald-600 px-6 py-4 flex items-center justify-between sticky top-0 z-50">
         <div className="flex items-center gap-2">
-          <Image src="/images/logo.png" width={40} height={40} alt="TrashVerse Logo" />
+          <Image src="/images/logo.png" width={40} height={40} alt="Trashverse Logo" />
           <div>
             <h1 className="font-bold text-2xl">Trashverse</h1>
             <p className="text-xs opacity-75">Smart Waste Collection</p>

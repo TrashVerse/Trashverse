@@ -1,12 +1,12 @@
 __turbopack_load_page_chunks__("/signup", [
-  "static/chunks/e176a_next_dist_compiled_6060daf4._.js",
-  "static/chunks/e176a_next_dist_shared_lib_286ba671._.js",
-  "static/chunks/e176a_next_dist_client_9ac8ff91._.js",
-  "static/chunks/e176a_next_dist_48f0c84a._.js",
-  "static/chunks/e176a_next_8deafb00._.js",
-  "static/chunks/e176a_react-dom_f2dfad22._.js",
-  "static/chunks/e176a_032a34b7._.js",
-  "static/chunks/[root-of-the-server]__bb12d966._.js",
-  "static/chunks/Desktop_web_pages_signup_2da965e7._.js",
-  "static/chunks/turbopack-Desktop_web_pages_signup_c021edef._.js"
+  "static/chunks/a1959_next_dist_compiled_d2cc1b44._.js",
+  "static/chunks/a1959_next_dist_shared_lib_e19f66db._.js",
+  "static/chunks/a1959_next_dist_client_db76b317._.js",
+  "static/chunks/a1959_next_dist_91c03e93._.js",
+  "static/chunks/a1959_next_5b7e1364._.js",
+  "static/chunks/a1959_react-dom_8bc0b7a0._.js",
+  "static/chunks/a1959_d6f547e5._.js",
+  "static/chunks/[root-of-the-server]__f5eba29e._.js",
+  "static/chunks/Trashverse_web_pages_signup_2da965e7._.js",
+  "static/chunks/turbopack-Trashverse_web_pages_signup_080bbab2._.js"
 ])

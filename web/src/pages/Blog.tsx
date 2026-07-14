@@ -4,7 +4,7 @@ import BlogCard from "../components/BlogCard";
 const samplePosts = [
   {
     id: 1,
-    title: "Welcome to TrashVerse",
+    title: "Welcome to Trashverse",
     excerpt: "Introducing our new platform for waste management and sustainability.",
     image: "/images/blog1.png",
   },
@@ -17,7 +17,7 @@ const samplePosts = [
   {
     id: 3,
     title: "Upcoming Features",
-    excerpt: "Exciting new updates coming soon to TrashVerse.",
+    excerpt: "Exciting new updates coming soon to Trashverse.",
     image: "/images/blog3.png",
   },
 ];
@@ -28,7 +28,7 @@ export default function Blog() {
       <Navbar />
       <section className="container mx-auto px-10 py-18 mt-30 h-100 mb-50">
         <h1 className="text-3xl font-bold text-center justify-center items-center h-20 text-green-600">
-          Blog Updates
+          Trash Coach
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
           {samplePosts.map((post) => (

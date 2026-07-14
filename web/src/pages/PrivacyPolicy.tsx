@@ -11,7 +11,7 @@ export default function PrivacyPolicy() {
         style={{ backgroundImage: "url('/images/logo.png')" }}
       >
         <div className="container-x max-w-3xl mx-auto">
-          <h1 className="text-xl font-semibold mb-25">Privacy Policy For TrashVerse</h1>
+          <h1 className="text-xl font-semibold mb-25">Privacy Policy For Trashverse</h1>
 
           <p className="text-m text-gray-600 mt-25 mb-10%">
             Effective Date: February 12, 2026 <br />
@@ -19,7 +19,7 @@ export default function PrivacyPolicy() {
           </p>
 
           <p className="mt-10 mb-6">
-            Welcome to TrashVerse (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;). We are
+            Welcome to Trashverse (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;). We are
             committed to protecting your privacy and ensuring that your personal data is handled in a
             safe and responsible manner. <br />
             This Privacy Policy outlines how we collect, use, and protect your information when you
@@ -87,7 +87,7 @@ export default function PrivacyPolicy() {
 
           <h2 className="text-xl font-semibold mt-8 mb-4">8. Contact Us</h2>
           <p className="mb-20">
-            <strong>Email:</strong>TrashVerserecycling@gmail.com
+            <strong>Email:</strong>Trashverserecycling@gmail.com
           </p>
           <p className="mb-2">
             <strong>Phone:</strong>+2348126727596

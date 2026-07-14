@@ -7,7 +7,7 @@ export default function WhyUs () {
       <div className="max-w-7xl mx-auto px-6 md:px-10 py-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 
         {/* LEFT — VIDEO */}
-        <div className="relative w-full h-65 md:h-90 lg:h-105 rounded-2xl overflow-hidden shadow-xl border border-white/10">
+        {/* <div className="relative w-full h-65 md:h-90 lg:h-105 rounded-2xl overflow-hidden shadow-xl border border-white/10">
           <video
             src="/video/recycle.mp4"
             autoPlay
@@ -16,7 +16,7 @@ export default function WhyUs () {
             playsInline
             className="w-full h-full object-cover"
           />
-        </div>
+        </div> */}
 
         {/* Right Content */}
         <div className="flex-1 space-y-10">
@@ -27,7 +27,7 @@ export default function WhyUs () {
 
           <div className="pt-4">
             <div6 className="pt-6 mt-[10%] mb-[6%]">
-            <h3 className="text-lg font-bold">Why TrashVerse?</h3>
+            <h3 className="text-lg font-bold">Why Trashverse?</h3>
             </div6>
 <ul>
   <li1 className="flex items-center gap-3">

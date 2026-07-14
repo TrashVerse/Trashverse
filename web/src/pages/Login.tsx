@@ -57,7 +57,7 @@ export default function Login() {
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-6">
       <div className="bg-white rounded-2xl flex flex-col justify-center items-center shadow-xl p-6 sm:p-8 w-full max-w-md">
         <div className="flex flex-row items-center justify-center mb-6">
-          <img src="/images/logo.png" alt="TrashVerse Logo" className="w-12 h-10 mr-2" />
+          <img src="/images/logo.png" alt="Trashverse Logo" className="w-12 h-10 mr-2" />
           <h1 className="text-xl sm:text-2xl font-bold text-green-600">Trashverse Login</h1>
         </div>
 

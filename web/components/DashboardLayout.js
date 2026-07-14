@@ -8,7 +8,7 @@ export default function DashboardLayout({ children }) {
       {/* SIDEBAR */}
       <aside className="w-80 bg-zinc-950 shadow-md p-5 hidden md:block">
         <h1 className="text-2xl font-bold text-white mb-8 min-h-[40px] flex items-center gap-2 justify-center bg-emerald-600 rounded-lg">
-          TrashVerse
+          Trashverse
         </h1>
 
         <nav className="space-y-4">

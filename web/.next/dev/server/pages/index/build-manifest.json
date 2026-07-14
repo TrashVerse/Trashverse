@@ -6,7 +6,7 @@
   "rootMainFiles": [],
   "pages": {
     "/": [
-      "static/chunks/[root-of-the-server]__01b5b1b3._.js",
+      "static/chunks/[root-of-the-server]__e5104519._.js",
       "static/chunks/a1959_next_dist_compiled_930ebb0b._.js",
       "static/chunks/a1959_next_dist_shared_lib_2315434f._.js",
       "static/chunks/a1959_next_dist_client_6607d6e3._.js",
@@ -16,9 +16,9 @@
       "static/chunks/a1959_react-icons_fa_index_mjs_0752566e._.js",
       "static/chunks/a1959_react-icons_fa6_index_mjs_49d43745._.js",
       "static/chunks/a1959_react-icons_lib_0173e181._.js",
-      "static/chunks/a1959_c512b5c9._.js",
+      "static/chunks/a1959_e87ba197._.js",
       "static/chunks/Trashverse_web_pages_index_2da965e7._.js",
-      "static/chunks/turbopack-Trashverse_web_pages_index_8f372502._.js"
+      "static/chunks/turbopack-Trashverse_web_pages_index_7e60fd28._.js"
     ]
   },
   "ampFirstPages": []

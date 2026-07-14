@@ -28,7 +28,7 @@ const jobOpenings = [
     location: "On-site",
     experience: "0-2 years",
     description:
-      "Join our development team to build and maintain the TrashVerse platform. You'll work on both frontend and backend technologies to create an intuitive waste management solution.",
+      "Join our development team to build and maintain the Trashverse platform. You'll work on both frontend and backend technologies to create an intuitive waste management solution.",
     requirements: [
       "Proficiency in React, Next.js, and Node.js",
       "Understanding of RESTful APIs and databases",
@@ -44,7 +44,7 @@ const jobOpenings = [
     location: "Hybrid",
     experience: "3-5 years",
     description:
-      "Provide strategic sustainability consulting to organizations implementing TrashVerse. Guide clients in reducing their environmental footprint through better waste management practices.",
+      "Provide strategic sustainability consulting to organizations implementing Trashverse. Guide clients in reducing their environmental footprint through better waste management practices.",
     requirements: [
       "Bachelor's degree in Sustainability, Business, or Environmental Science",
       "3-5 years of consulting or sustainability experience",
