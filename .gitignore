@@ -66,3 +66,5 @@ htmlcov/
 # Misc
 .cache/
 .parcel-cache/
+
+package-lock.json
